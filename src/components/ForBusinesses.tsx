@@ -3,6 +3,7 @@ import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Building, Hotel, Users } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import BusinessContactDialog from './BusinessContactDialog';
 
 const ForBusinesses = () => {
   const { t } = useLanguage();
@@ -48,7 +49,15 @@ const ForBusinesses = () => {
           <p className="text-lg text-gray-700 max-w-3xl mx-auto mb-6">
             {t('businessDesc')}
           </p>
-          <Button className="btn-primary">{t('contactUs')}</Button>
+          <div className="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto mt-8">
+            <h4 className="text-xl font-bold mb-4 text-ocean-dark">{t('referralProgram')}</h4>
+            <p className="text-gray-700 mb-6">
+              {t('referralDescription')}
+            </p>
+            <BusinessContactDialog>
+              <Button className="btn-primary">{t('contactUs')}</Button>
+            </BusinessContactDialog>
+          </div>
         </div>
       </div>
     </section>

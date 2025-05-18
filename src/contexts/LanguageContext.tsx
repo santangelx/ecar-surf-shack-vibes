@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Define available languages
@@ -78,6 +77,15 @@ const translations: Translations = {
     name: "Name",
     email: "Email",
     phone: "Phone",
+    selectTime: "Select Time",
+    company: "Company",
+    message: "Message",
+    businessInquiryPlaceholder: "Hi, this is Hotel Alcazar. I'd like to reserve 10 kayaks for...",
+    send: "Send",
+    referralProgram: "Referral Program",
+    referralDescription: "Partner with us and earn commission on every booking. We offer a 20% commission on all bookings referred by our business partners.",
+    referralCommission: "Referrers keep 20% of booking price for all customers referred. For more info, please fill the form.",
+    businessReferral: "Businesses can earn 20% commission on all bookings."
   },
   es: {
     // Hero section
@@ -144,6 +152,15 @@ const translations: Translations = {
     name: "Nombre",
     email: "Correo Electrónico",
     phone: "Teléfono",
+    selectTime: "Seleccionar Hora",
+    company: "Empresa",
+    message: "Mensaje",
+    businessInquiryPlaceholder: "Hola, soy el Hotel Alcazar. Me gustaría reservar 10 kayaks para...",
+    send: "Enviar",
+    referralProgram: "Programa de Referencias",
+    referralDescription: "Asóciese con nosotros y gane comisiones por cada reserva. Ofrecemos una comisión del 20% en todas las reservas referidas por nuestros socios comerciales.",
+    referralCommission: "Los referentes mantienen el 20% del precio de reserva para todos los clientes referidos. Para más información, complete el formulario.",
+    businessReferral: "Las empresas pueden ganar un 20% de comisión en todas las reservas."
   },
   fr: {
     // Hero section
@@ -210,6 +227,15 @@ const translations: Translations = {
     name: "Nom",
     email: "Email",
     phone: "Téléphone",
+    selectTime: "Sélectionner l'Heure",
+    company: "Entreprise",
+    message: "Message",
+    businessInquiryPlaceholder: "Bonjour, c'est l'Hôtel Alcazar. Je voudrais réserver 10 kayaks pour...",
+    send: "Envoyer",
+    referralProgram: "Programme de Parrainage",
+    referralDescription: "Associez-vous avec nous et gagnez une commission sur chaque réservation. Nous offrons une commission de 20% sur toutes les réservations référées par nos partenaires commerciaux.",
+    referralCommission: "Les référents conservent 20% du prix de réservation pour tous les clients référés. Pour plus d'informations, veuillez remplir le formulaire.",
+    businessReferral: "Les entreprises peuvent gagner 20% de commission sur toutes les réservations."
   }
 };
 

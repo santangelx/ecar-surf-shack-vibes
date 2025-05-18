@@ -28,7 +28,7 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover';
 import { format } from 'date-fns';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 
@@ -39,10 +39,14 @@ const ReservationDialog = ({ children }: { children: React.ReactNode }) => {
   const [activity, setActivity] = useState<string>('kayak');
   const [duration, setDuration] = useState<string>('1');
   const [date, setDate] = useState<Date | undefined>(undefined);
+  const [time, setTime] = useState<string>('10:00');
   const [price, setPrice] = useState<number>(12);
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
+
+  // Available time slots
+  const timeSlots = ['09:00', '10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00'];
 
   // Price calculation based on activity and duration
   useEffect(() => {
@@ -69,7 +73,7 @@ const ReservationDialog = ({ children }: { children: React.ReactNode }) => {
     // Here we would normally send the reservation data to a server
     toast({
       title: "Reservation submitted!",
-      description: `We'll contact you soon to confirm your ${activity} reservation.`,
+      description: `We'll contact you soon to confirm your ${activity} reservation for ${date ? format(date, 'PPP') : ''} at ${time}.`,
     });
     
     setOpen(false);
@@ -78,6 +82,7 @@ const ReservationDialog = ({ children }: { children: React.ReactNode }) => {
     setActivity('kayak');
     setDuration('1');
     setDate(undefined);
+    setTime('10:00');
     setName('');
     setEmail('');
     setPhone('');
@@ -161,6 +166,25 @@ const ReservationDialog = ({ children }: { children: React.ReactNode }) => {
                   />
                 </PopoverContent>
               </Popover>
+            </div>
+            
+            <div className="grid gap-2">
+              <Label htmlFor="time">{t('selectTime')}</Label>
+              <Select 
+                value={time} 
+                onValueChange={setTime}
+              >
+                <SelectTrigger id="time" className="w-full">
+                  <SelectValue placeholder={t('selectTime')} />
+                </SelectTrigger>
+                <SelectContent position="popper" className="bg-white">
+                  {timeSlots.map((timeSlot) => (
+                    <SelectItem key={timeSlot} value={timeSlot}>
+                      {timeSlot}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
             
             <div className="border-t border-ocean-light pt-2 mt-2">
