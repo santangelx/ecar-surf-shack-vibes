@@ -6,6 +6,7 @@ import Services from '@/components/Services';
 import Prices from '@/components/Prices';
 import BusinessHours from '@/components/BusinessHours';
 import Location from '@/components/Location';
+import ForBusinesses from '@/components/ForBusinesses';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -16,6 +17,7 @@ const Index = () => {
       <Services />
       <Prices />
       <BusinessHours />
+      <ForBusinesses />
       <Location />
       <Footer />
     </div>

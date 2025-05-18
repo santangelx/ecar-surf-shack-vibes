@@ -3,10 +3,14 @@ import React, { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSelector from './LanguageSelector';
+import ReservationDialog from './ReservationDialog';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,34 +33,76 @@ const Navbar = () => {
           <a href="#" className="text-2xl font-bold text-ocean-dark">OpenSea</a>
           
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="font-medium text-gray-700 hover:text-ocean transition-colors">Services</a>
-            <a href="#prices" className="font-medium text-gray-700 hover:text-ocean transition-colors">Prices</a>
-            <a href="#hours" className="font-medium text-gray-700 hover:text-ocean transition-colors">Hours</a>
-            <a href="#location" className="font-medium text-gray-700 hover:text-ocean transition-colors">Location</a>
-            <Button className="btn-primary">Reserve Now</Button>
+          <div className="hidden md:flex items-center space-x-6">
+            <a href="#services" className="font-medium text-gray-700 hover:text-ocean transition-colors">{t('services')}</a>
+            <a href="#prices" className="font-medium text-gray-700 hover:text-ocean transition-colors">{t('prices')}</a>
+            <a href="#hours" className="font-medium text-gray-700 hover:text-ocean transition-colors">{t('hours')}</a>
+            <a href="#businesses" className="font-medium text-gray-700 hover:text-ocean transition-colors">{t('forBusinesses')}</a>
+            <a href="#location" className="font-medium text-gray-700 hover:text-ocean transition-colors">{t('location')}</a>
+            <LanguageSelector />
+            <ReservationDialog>
+              <Button className="btn-primary">{t('reserveButton')}</Button>
+            </ReservationDialog>
           </div>
           
           {/* Mobile Menu Button */}
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="md:hidden" 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            <Menu className="h-6 w-6" />
-          </Button>
+          <div className="flex items-center space-x-2 md:hidden">
+            <LanguageSelector />
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="md:hidden" 
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <Menu className="h-6 w-6" />
+            </Button>
+          </div>
         </div>
         
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white shadow-lg rounded-lg mt-4 p-4 animate-fade-in">
             <div className="flex flex-col space-y-4">
-              <a href="#services" className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2">Services</a>
-              <a href="#prices" className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2">Prices</a>
-              <a href="#hours" className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2">Hours</a>
-              <a href="#location" className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2">Location</a>
-              <Button className="btn-primary w-full">Reserve Now</Button>
+              <a 
+                href="#services" 
+                className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t('services')}
+              </a>
+              <a 
+                href="#prices" 
+                className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t('prices')}
+              </a>
+              <a 
+                href="#hours" 
+                className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t('hours')}
+              </a>
+              <a 
+                href="#businesses" 
+                className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t('forBusinesses')}
+              </a>
+              <a 
+                href="#location" 
+                className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {t('location')}
+              </a>
+              <ReservationDialog>
+                <Button className="btn-primary w-full" onClick={() => setMobileMenuOpen(false)}>
+                  {t('reserveButton')}
+                </Button>
+              </ReservationDialog>
             </div>
           </div>
         )}

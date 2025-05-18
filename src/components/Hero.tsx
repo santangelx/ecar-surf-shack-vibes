@@ -2,8 +2,12 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { useLanguage } from '@/contexts/LanguageContext';
+import ReservationDialog from './ReservationDialog';
 
 const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="relative h-screen flex items-center bg-hero-pattern bg-cover bg-center pt-16">
       <div className="absolute inset-0 bg-gradient-to-r from-white/50 to-transparent"></div>
@@ -14,15 +18,23 @@ const Hero = () => {
             <span className="text-coral">SEA</span>
           </h1>
           <h2 className="text-2xl md:text-3xl font-medium text-gray-800 mb-6 animate-fade-in">
-            Kayak & Paddle Surf in Almuñecar, Granada
+            {t('tagline')}
           </h2>
           <p className="text-lg text-gray-700 mb-8 animate-fade-in">
-            Experience the beautiful Mediterranean coast from a different perspective. 
-            Rent kayaks and paddle surf boards with us for an unforgettable adventure.
+            {t('description')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in">
-            <Button className="btn-primary">Reserve Here</Button>
-            <Button className="btn-secondary">View Prices</Button>
+            <ReservationDialog>
+              <Button className="btn-primary">{t('reserveButton')}</Button>
+            </ReservationDialog>
+            <Button 
+              className="btn-secondary"
+              onClick={() => {
+                document.getElementById('prices')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              {t('viewPricesButton')}
+            </Button>
           </div>
         </div>
       </div>
