@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Kayak, Waves } from "lucide-react";
+import { Ship, Waves as WavesIcon } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 const Services = () => {
@@ -23,7 +23,7 @@ const Services = () => {
             </div>
             <CardHeader>
               <div className="flex items-center gap-2">
-                <Kayak className="h-6 w-6 text-ocean" />
+                <Ship className="h-6 w-6 text-ocean" />
                 <CardTitle>Kayak Rentals</CardTitle>
               </div>
               <CardDescription>Explore hidden coves and breathtaking cliffs</CardDescription>
@@ -46,7 +46,7 @@ const Services = () => {
             </div>
             <CardHeader>
               <div className="flex items-center gap-2">
-                <Waves className="h-6 w-6 text-ocean" />
+                <WavesIcon className="h-6 w-6 text-ocean" />
                 <CardTitle>Paddle Surf</CardTitle>
               </div>
               <CardDescription>Find your balance on the Mediterranean waves</CardDescription>

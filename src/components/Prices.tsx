@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Currency, Clock } from "lucide-react";
+import { Currency, WaterIcon } from "lucide-react";
 import { 
   Table, 
   TableBody, 
@@ -62,7 +62,7 @@ const Prices = () => {
           
           <div className="bg-white rounded-lg shadow-md p-6 border border-ocean-light">
             <div className="flex items-center gap-2 mb-4">
-              <Waves className="h-6 w-6 text-ocean" />
+              <WaterIcon className="h-6 w-6 text-ocean" />
               <h3 className="text-2xl font-bold text-ocean-dark">Paddle Surf</h3>
             </div>
             
