@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -77,7 +76,9 @@ export default {
 					light: '#FFE0B2',
 					DEFAULT: '#F97316',
 					dark: '#C2410C',
-				}
+				},
+				'coral-custom': '#FF6F61', // More coral-like color
+				'turquoise': '#40E0D0', // Turquoise color
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

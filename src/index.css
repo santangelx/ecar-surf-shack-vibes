@@ -101,18 +101,19 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-ocean hover:bg-ocean-dark text-white font-semibold py-3 px-6 rounded-md shadow-md transition-colors duration-200;
+    @apply bg-turquoise hover:bg-turquoise/90 text-white font-semibold py-3 px-6 rounded-md shadow-md transition-colors duration-200;
   }
 
   .btn-secondary {
-    @apply bg-coral hover:bg-coral-dark text-white font-semibold py-3 px-6 rounded-md shadow-md transition-colors duration-200;
+    @apply bg-coral-custom hover:bg-coral-custom/90 text-white font-semibold py-3 px-6 rounded-md shadow-md transition-colors duration-200;
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl font-bold text-ocean-dark mb-4;
+    @apply text-3xl md:text-4xl font-bold text-turquoise mb-4;
   }
 
   .section-subtitle {
     @apply text-xl md:text-2xl font-medium text-gray-600 mb-8;
   }
 }
+
