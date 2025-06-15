@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Define available languages
@@ -52,16 +51,14 @@ const translations: Translations = {
     dailyHours: "Daily Hours",
     everyday: "Every day",
     pleaseNote: "Please Note",
-    weatherNote: "Hours may vary depending on weather conditions. For rentals longer than 2 hours, please book in advance. Last rental is 2 hours before closing time.",
+    weatherNote: "Hours may vary depending on weather conditions.",
     // Location
     findUs: "Find Us",
-    address: "Paseo Marítimo Rey de España, Almuñecar, Granada, Spain",
+    locationSubtitle: "We're located on the beautiful beach of Almuñecar",
+    address: "Pl. San Cristóbal, 18690 Almuñécar, Granada, Spain",
+    howToFindUs: "How to find us",
+    locationDescription: "We're located on San Cristóbal beach, right next to the blue flag area. Look for our blue and white flags with the OpenSea logo.",
     getDirections: "Get Directions",
-    // For businesses
-    forBusinesses: "For Businesses",
-    hotelDeals: "Special offers for hotels and accommodations",
-    businessDesc: "Are you a hotel or accommodation in Almuñecar? Offer your clients a special discount on our services. Contact us for special rates and packages for your guests.",
-    contactUs: "Contact Us",
     // Footer
     quickLinks: "Quick Links",
     allRightsReserved: "All rights reserved.",
@@ -83,11 +80,7 @@ const translations: Translations = {
     company: "Company",
     message: "Message",
     businessInquiryPlaceholder: "Hi, this is Hotel Alcazar. I'd like to reserve 10 kayaks for...",
-    send: "Send",
-    referralProgram: "Referral Program",
-    referralDescription: "Partner with us and earn commission on every booking. We offer a 20% commission on all bookings referred by our business partners.",
-    referralCommission: "Referrers keep 20% of booking price for all customers referred. For more info, please fill the form.",
-    businessReferral: "Businesses can earn 20% commission on all bookings."
+    send: "Send"
   },
   es: {
     // Hero section
@@ -128,16 +121,14 @@ const translations: Translations = {
     dailyHours: "Horario Diario",
     everyday: "Todos los días",
     pleaseNote: "Nota Importante",
-    weatherNote: "Los horarios pueden variar según las condiciones climáticas. Para alquileres de más de 2 horas, reserve con anticipación. El último alquiler es 2 horas antes del cierre.",
+    weatherNote: "Los horarios pueden variar según las condiciones climáticas.",
     // Location
     findUs: "Encuéntranos",
-    address: "Paseo Marítimo Rey de España, Almuñecar, Granada, España",
+    locationSubtitle: "Estamos ubicados en la hermosa playa de Almuñecar",
+    address: "Pl. San Cristóbal, 18690 Almuñécar, Granada, España",
+    howToFindUs: "Cómo encontrarnos",
+    locationDescription: "Estamos ubicados en la playa de San Cristóbal, justo al lado de la zona pavillon bleu. Busca nuestras banderas azules y blancas con el logo OpenSea.",
     getDirections: "Cómo Llegar",
-    // For businesses
-    forBusinesses: "Para Empresas",
-    hotelDeals: "Ofertas especiales para hoteles y alojamientos",
-    businessDesc: "¿Eres un hotel o alojamiento en Almuñecar? Ofrece a tus clientes un descuento especial en nuestros servicios. Contáctanos para tarifas y paquetes especiales para tus huéspedes.",
-    contactUs: "Contáctanos",
     // Footer
     quickLinks: "Enlaces Rápidos",
     allRightsReserved: "Todos los derechos reservados.",
@@ -159,11 +150,7 @@ const translations: Translations = {
     company: "Empresa",
     message: "Mensaje",
     businessInquiryPlaceholder: "Hola, soy el Hotel Alcazar. Me gustaría reservar 10 kayaks para...",
-    send: "Enviar",
-    referralProgram: "Programa de Referencias",
-    referralDescription: "Asóciese con nosotros y gane comisiones por cada reserva. Ofrecemos una comisión del 20% en todas las reservas referidas por nuestros socios comerciales.",
-    referralCommission: "Los referentes mantienen el 20% del precio de reserva para todos los clientes referidos. Para más información, complete el formulario.",
-    businessReferral: "Las empresas pueden ganar un 20% de comisión en todas las reservas."
+    send: "Enviar"
   },
   fr: {
     // Hero section
@@ -204,16 +191,14 @@ const translations: Translations = {
     dailyHours: "Horaires Quotidiens",
     everyday: "Tous les jours",
     pleaseNote: "Veuillez Noter",
-    weatherNote: "Les horaires peuvent varier selon les conditions météorologiques. Pour les locations de plus de 2 heures, veuillez réserver à l'avance. La dernière location est 2 heures avant la fermeture.",
+    weatherNote: "Les horaires peuvent varier selon les conditions météorologiques.",
     // Location
     findUs: "Trouvez-Nous",
-    address: "Paseo Marítimo Rey de España, Almuñecar, Grenade, Espagne",
+    locationSubtitle: "Nous sommes situés sur la magnifique plage d'Almuñecar",
+    address: "Pl. San Cristóbal, 18690 Almuñécar, Grenade, Espagne",
+    howToFindUs: "Comment nous trouver",
+    locationDescription: "Nous sommes situés sur la plage de San Cristóbal, juste à côté de la zone pavillon bleu. Cherchez nos drapeaux bleus et blancs avec le logo OpenSea.",
     getDirections: "Obtenir l'Itinéraire",
-    // For businesses
-    forBusinesses: "Pour les Entreprises",
-    hotelDeals: "Offres spéciales pour les hôtels et hébergements",
-    businessDesc: "Êtes-vous un hôtel ou un hébergement à Almuñecar? Offrez à vos clients une réduction spéciale sur nos services. Contactez-nous pour des tarifs et des forfaits spéciaux pour vos invités.",
-    contactUs: "Contactez-Nous",
     // Footer
     quickLinks: "Liens Rapides",
     allRightsReserved: "Tous droits réservés.",
@@ -235,11 +220,7 @@ const translations: Translations = {
     company: "Entreprise",
     message: "Message",
     businessInquiryPlaceholder: "Bonjour, c'est l'Hôtel Alcazar. Je voudrais réserver 10 kayaks pour...",
-    send: "Envoyer",
-    referralProgram: "Programme de Parrainage",
-    referralDescription: "Associez-vous avec nous et gagnez une commission sur chaque réservation. Nous offrons une commission de 20% sur toutes les réservations référées par nos partenaires commerciaux.",
-    referralCommission: "Les référents conservent 20% du prix de réservation pour tous les clients référés. Pour plus d'informations, veuillez remplir le formulaire.",
-    businessReferral: "Les entreprises peuvent gagner 20% de commission sur toutes les réservations."
+    send: "Envoyer"
   }
 };
 
