@@ -5,7 +5,6 @@ import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSelector from './LanguageSelector';
-import ReservationDialog from './ReservationDialog';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -37,12 +36,8 @@ const Navbar = () => {
             <a href="#services" className="font-medium text-gray-700 hover:text-ocean transition-colors">{t('services')}</a>
             <a href="#prices" className="font-medium text-gray-700 hover:text-ocean transition-colors">{t('prices')}</a>
             <a href="#hours" className="font-medium text-gray-700 hover:text-ocean transition-colors">{t('hours')}</a>
-            <a href="#businesses" className="font-medium text-gray-700 hover:text-ocean transition-colors">{t('forBusinesses')}</a>
             <a href="#location" className="font-medium text-gray-700 hover:text-ocean transition-colors">{t('location')}</a>
             <LanguageSelector />
-            <ReservationDialog>
-              <Button className="btn-primary">{t('reserveButton')}</Button>
-            </ReservationDialog>
           </div>
           
           {/* Mobile Menu Button */}
@@ -85,24 +80,12 @@ const Navbar = () => {
                 {t('hours')}
               </a>
               <a 
-                href="#businesses" 
-                className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {t('forBusinesses')}
-              </a>
-              <a 
                 href="#location" 
                 className="font-medium text-gray-700 hover:text-ocean transition-colors px-3 py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {t('location')}
               </a>
-              <ReservationDialog>
-                <Button className="btn-primary w-full" onClick={() => setMobileMenuOpen(false)}>
-                  {t('reserveButton')}
-                </Button>
-              </ReservationDialog>
             </div>
           </div>
         )}
