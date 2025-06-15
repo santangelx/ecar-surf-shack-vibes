@@ -43,22 +43,10 @@ const Prices = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium">{t('singleKayak')}</TableCell>
+                    <TableCell className="font-medium">{t('kayakForTwo')}</TableCell>
                     <TableCell>€12</TableCell>
                     <TableCell>€20</TableCell>
                     <TableCell>€35</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">{t('doubleKayak')}</TableCell>
-                    <TableCell>€18</TableCell>
-                    <TableCell>€30</TableCell>
-                    <TableCell>€50</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">{t('familyKayak')}</TableCell>
-                    <TableCell>€22</TableCell>
-                    <TableCell>€38</TableCell>
-                    <TableCell>€60</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -84,22 +72,10 @@ const Prices = () => {
                 </TableHeader>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-medium">{t('standardBoard')}</TableCell>
-                    <TableCell>€15</TableCell>
-                    <TableCell>€25</TableCell>
-                    <TableCell>€40</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">{t('premiumBoard')}</TableCell>
+                    <TableCell className="font-medium">{t('paddleBoard')}</TableCell>
+                    <TableCell>€10</TableCell>
                     <TableCell>€18</TableCell>
-                    <TableCell>€32</TableCell>
-                    <TableCell>€50</TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell className="font-medium">{t('beginnerLesson')}</TableCell>
-                    <TableCell>€25</TableCell>
-                    <TableCell>€45</TableCell>
-                    <TableCell>-</TableCell>
+                    <TableCell>€30</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>

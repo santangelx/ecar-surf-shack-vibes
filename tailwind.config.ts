@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -63,9 +64,9 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				ocean: {
-					light: '#E0F7FA',
-					DEFAULT: '#0EA5E9',
-					dark: '#0369A1',
+					light: '#B3E5F7',
+					DEFAULT: '#0097B2',
+					dark: '#006B7A',
 				},
 				sand: {
 					light: '#FFF8E1',
@@ -77,8 +78,8 @@ export default {
 					DEFAULT: '#F97316',
 					dark: '#C2410C',
 				},
-				'coral-custom': '#FF6F61', // More coral-like color
-				'turquoise': '#40E0D0', // Turquoise color
+				'coral-custom': '#FF6F61',
+				'turquoise': '#0097B2',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
