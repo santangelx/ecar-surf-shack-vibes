@@ -11,9 +11,9 @@ const Hero = () => {
       <div className="absolute inset-0 bg-gradient-to-r from-white/50 to-transparent"></div>
       <div className="container mx-auto px-4 md:px-6 z-10">
         <div className="max-w-3xl">
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-fade-in" style={{ fontFamily: 'monospace' }}>
             <span className="block text-ocean">OPEN</span>
-            <span className="text-coral-custom">SEA</span>
+            <span className="text-ocean">SEA</span>
           </h1>
           <h2 className="text-2xl md:text-3xl font-medium text-gray-800 mb-6 animate-fade-in">
             {t('tagline')}

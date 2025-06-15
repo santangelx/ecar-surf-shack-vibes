@@ -62,6 +62,9 @@ const translations: Translations = {
     hotelDeals: "Special offers for hotels and accommodations",
     businessDesc: "Are you a hotel or accommodation in Almuñecar? Offer your clients a special discount on our services. Contact us for special rates and packages for your guests.",
     contactUs: "Contact Us",
+    // Footer
+    quickLinks: "Quick Links",
+    allRightsReserved: "All rights reserved.",
     // Reservation modal
     makeReservation: "Make a Reservation",
     selectActivity: "Select Activity",
@@ -135,6 +138,9 @@ const translations: Translations = {
     hotelDeals: "Ofertas especiales para hoteles y alojamientos",
     businessDesc: "¿Eres un hotel o alojamiento en Almuñecar? Ofrece a tus clientes un descuento especial en nuestros servicios. Contáctanos para tarifas y paquetes especiales para tus huéspedes.",
     contactUs: "Contáctanos",
+    // Footer
+    quickLinks: "Enlaces Rápidos",
+    allRightsReserved: "Todos los derechos reservados.",
     // Reservation modal
     makeReservation: "Hacer una Reserva",
     selectActivity: "Seleccionar Actividad",
@@ -208,6 +214,9 @@ const translations: Translations = {
     hotelDeals: "Offres spéciales pour les hôtels et hébergements",
     businessDesc: "Êtes-vous un hôtel ou un hébergement à Almuñecar? Offrez à vos clients une réduction spéciale sur nos services. Contactez-nous pour des tarifs et des forfaits spéciaux pour vos invités.",
     contactUs: "Contactez-Nous",
+    // Footer
+    quickLinks: "Liens Rapides",
+    allRightsReserved: "Tous droits réservés.",
     // Reservation modal
     makeReservation: "Faire une Réservation",
     selectActivity: "Sélectionner l'Activité",

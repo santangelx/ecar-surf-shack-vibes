@@ -46,7 +46,7 @@ const Prices = () => {
                     <TableCell className="font-medium">{t('kayakForTwo')}</TableCell>
                     <TableCell>€12</TableCell>
                     <TableCell>€20</TableCell>
-                    <TableCell>€35</TableCell>
+                    <TableCell>€50</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -75,7 +75,7 @@ const Prices = () => {
                     <TableCell className="font-medium">{t('paddleBoard')}</TableCell>
                     <TableCell>€10</TableCell>
                     <TableCell>€18</TableCell>
-                    <TableCell>€30</TableCell>
+                    <TableCell>€40</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
