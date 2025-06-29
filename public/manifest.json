@@ -1,0 +1,27 @@
+{
+  "name": "OpenSea Kayak & Paddle Surf Almuñécar",
+  "short_name": "OpenSea",
+  "description": "Kayak and paddle board rentals in Almuñécar, Costa Tropical",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0891b2",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["sports", "travel", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr"
+} 

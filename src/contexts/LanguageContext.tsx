@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // Define available languages
 export type Language = 'en' | 'es' | 'fr';
@@ -23,6 +24,10 @@ const translations: Translations = {
     prices: "Prices",
     hours: "Hours",
     location: "Location",
+    home: "Home",
+    kayakRentals: "Kayak Rentals",
+    paddleBoardNav: "Paddle Board", 
+    seaActivities: "Sea Activities",
     // Services
     ourServices: "Our Services",
     experienceDescription: "Experience the beautiful coast of Almuñecar",
@@ -100,6 +105,10 @@ const translations: Translations = {
     prices: "Precios",
     hours: "Horarios",
     location: "Ubicación",
+    home: "Inicio",
+    kayakRentals: "Alquiler Kayak",
+    paddleBoardNav: "Paddle Surf",
+    seaActivities: "Actividades Marítimas",
     // Services
     ourServices: "Nuestros Servicios",
     experienceDescription: "Experimenta la hermosa costa de Almuñecar",
@@ -177,6 +186,10 @@ const translations: Translations = {
     prices: "Prix",
     hours: "Horaires",
     location: "Emplacement",
+    home: "Accueil",
+    kayakRentals: "Location Kayak",
+    paddleBoardNav: "Paddle Board",
+    seaActivities: "Activités Maritimes",
     // Services
     ourServices: "Nos Services",
     experienceDescription: "Découvrez la magnifique côte d'Almuñecar",
@@ -245,23 +258,86 @@ const translations: Translations = {
   }
 };
 
+// Define route paths for each language
+const routePaths = {
+  en: {
+    home: '/',
+    kayak: '/kayak-rental-almunecar',
+    paddle: '/paddle-board-almunecar',
+    activities: '/sea-activities-costa-tropical'
+  },
+  es: {
+    home: '/es',
+    kayak: '/es/alquiler-kayak-almunecar',
+    paddle: '/es/paddle-surf-almunecar',
+    activities: '/es/actividades-maritimas-costa-tropical'
+  },
+  fr: {
+    home: '/fr',
+    kayak: '/fr/location-kayak-almunecar',
+    paddle: '/fr/paddle-board-almunecar',
+    activities: '/fr/activites-maritimes-costa-tropical'
+  }
+};
+
 interface LanguageContextType {
   language: Language;
   setLanguage: (language: Language) => void;
   t: (key: string) => string;
+  getLocalizedPath: (path: string) => string;
+  routePaths: typeof routePaths;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [language, setLanguageState] = useState<Language>('en');
+
+  // Detect language from URL
+  useEffect(() => {
+    const path = location.pathname;
+    if (path.startsWith('/es')) {
+      setLanguageState('es');
+    } else if (path.startsWith('/fr')) {
+      setLanguageState('fr');
+    } else {
+      setLanguageState('en');
+    }
+  }, [location.pathname]);
+
+  const setLanguage = (newLanguage: Language) => {
+    setLanguageState(newLanguage);
+    
+    // Get current route type
+    const currentPath = location.pathname;
+    let routeType = 'home';
+    
+    if (currentPath.includes('kayak')) {
+      routeType = 'kayak';
+    } else if (currentPath.includes('paddle')) {
+      routeType = 'paddle';
+    } else if (currentPath.includes('activities') || currentPath.includes('actividades') || currentPath.includes('activites')) {
+      routeType = 'activities';
+    }
+    
+    // Navigate to the same page in the new language
+    const newPath = routePaths[newLanguage][routeType as keyof typeof routePaths.en];
+    navigate(newPath);
+  };
 
   const t = (key: string): string => {
     return translations[language][key] || key;
   };
 
+  const getLocalizedPath = (path: string): string => {
+    if (language === 'en') return path;
+    return `/${language}${path}`;
+  };
+
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, getLocalizedPath, routePaths }}>
       {children}
     </LanguageContext.Provider>
   );

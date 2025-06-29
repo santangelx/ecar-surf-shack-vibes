@@ -20,8 +20,11 @@ const Services = () => {
             <div className="h-64 overflow-hidden">
               <img 
                 src="/lovable-uploads/kayak.jpeg"
-                alt="Kayak rental in Almuñecar" 
+                alt="Kayak rental service in Almuñécar beach - Double and single kayaks available for exploring Costa Tropical coastline" 
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                loading="lazy"
+                width="400"
+                height="256"
               />
             </div>
             <CardHeader>
@@ -42,8 +45,11 @@ const Services = () => {
             <div className="h-64 overflow-hidden">
               <img 
                 src="/lovable-uploads/paddle.jpeg"
-                alt="Paddle Surf in Almuñecar" 
+                alt="Stand up paddle board (SUP) rental in Almuñécar - Professional boards for beginners and advanced paddlers on Mediterranean Sea" 
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                loading="lazy"
+                width="400"
+                height="256"
               />
             </div>
             <CardHeader>

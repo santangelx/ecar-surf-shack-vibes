@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,18 +7,51 @@
     <meta name="description" content="Rent kayaks and paddle surf boards in Almuñecar, Granada. Experience the beauty of the Mediterranean with OpenSea." />
     <meta name="author" content="OpenSea" />
 
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" as="style">
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+      /* Critical CSS for initial render */
+      *, *::before, *::after { box-sizing: border-box; }
+      body { margin: 0; font-family: 'Montserrat', system-ui, -apple-system, sans-serif; -webkit-font-smoothing: antialiased; }
+      .min-h-screen { min-height: 100vh; }
+      .container { width: 100%; margin: 0 auto; padding: 0 1rem; }
+      @media (min-width: 640px) { .container { max-width: 640px; } }
+      @media (min-width: 768px) { .container { max-width: 768px; } }
+      @media (min-width: 1024px) { .container { max-width: 1024px; } }
+      @media (min-width: 1280px) { .container { max-width: 1280px; } }
+    </style>
+    
+    <!-- Load fonts asynchronously -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="OpenSea Kayak & Paddle Surf - Almuñecar, Granada" />
     <meta property="og:description" content="Rent kayaks and paddle surf boards in Almuñecar, Granada. Experience the beauty of the Mediterranean with OpenSea." />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta property="og:image" content="https://opensea-almunecar.com/og-image.jpg" />
+    <meta property="og:url" content="https://opensea-almunecar.com" />
 
+    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@opensea_kayak" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <meta name="twitter:image" content="https://opensea-almunecar.com/og-image.jpg" />
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0891b2">
   </head>
 
   <body>
