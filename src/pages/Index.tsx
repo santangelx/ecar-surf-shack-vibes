@@ -44,11 +44,11 @@ const Index = () => {
       <SchemaMarkup />
       <Navbar />
       <Hero />
-      <Services />
-      <AboutUs />
+      <Services />      
       <Prices />
       <BusinessHours />
       <Location />
+      <AboutUs />
       <Footer />
     </div>
   );
