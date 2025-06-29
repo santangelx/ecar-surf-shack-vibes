@@ -12,9 +12,9 @@ const AboutUs = () => {
       subtitle: "Operating on Playa de San Cristóbal since 2015",
       description: "Founded by passionate water sports enthusiasts, OpenSea has been introducing visitors and locals to the beauty of Costa Tropical's coastline for nearly a decade. Our team of certified instructors and local guides ensures safe, memorable experiences on the Mediterranean.",
       stats: [
-        { icon: Clock, label: "Years of Experience", value: "9+" },
-        { icon: Users, label: "Happy Customers", value: "15,000+" },
-        { icon: Award, label: "5-Star Reviews", value: "500+" },
+        { icon: Clock, label: "Years of Experience", value: "5+" },
+        { icon: Users, label: "Happy Customers", value: "1,000+" },
+        { icon: Award, label: "5-Star Reviews", value: "50+" },
         { icon: Shield, label: "Safety Record", value: "100%" }
       ],
       certifications: "All our instructors are certified by the Spanish Federation of Surfing and Paddling (FES) and hold current first aid and water rescue certifications.",
@@ -25,9 +25,9 @@ const AboutUs = () => {
       subtitle: "Operando en Playa de San Cristóbal desde 2015",
       description: "Fundada por apasionados de los deportes acuáticos, OpenSea ha estado introduciendo a visitantes y locales a la belleza de la costa de la Costa Tropical durante casi una década. Nuestro equipo de instructores certificados y guías locales garantiza experiencias seguras y memorables en el Mediterráneo.",
       stats: [
-        { icon: Clock, label: "Años de Experiencia", value: "9+" },
-        { icon: Users, label: "Clientes Satisfechos", value: "15,000+" },
-        { icon: Award, label: "Reseñas 5 Estrellas", value: "500+" },
+        { icon: Clock, label: "Años de Experiencia", value: "5+" },
+        { icon: Users, label: "Clientes Satisfechos", value: "1,000+" },
+        { icon: Award, label: "Reseñas 5 Estrellas", value: "50+" },
         { icon: Shield, label: "Record de Seguridad", value: "100%" }
       ],
       certifications: "Todos nuestros instructores están certificados por la Federación Española de Surf (FES) y poseen certificaciones actuales de primeros auxilios y rescate acuático.",
@@ -38,9 +38,9 @@ const AboutUs = () => {
       subtitle: "Opérant sur Playa de San Cristóbal depuis 2015",
       description: "Fondée par des passionnés de sports nautiques, OpenSea initie les visiteurs et les locaux à la beauté du littoral de la Costa Tropical depuis près d'une décennie. Notre équipe d'instructeurs certifiés et de guides locaux garantit des expériences sûres et mémorables sur la Méditerranée.",
       stats: [
-        { icon: Clock, label: "Années d'Expérience", value: "9+" },
-        { icon: Users, label: "Clients Satisfaits", value: "15,000+" },
-        { icon: Award, label: "Avis 5 Étoiles", value: "500+" },
+        { icon: Clock, label: "Années d'Expérience", value: "5+" },
+        { icon: Users, label: "Clients Satisfaits", value: "1,000+" },
+        { icon: Award, label: "Avis 5 Étoiles", value: "50+" },
         { icon: Shield, label: "Record de Sécurité", value: "100%" }
       ],
       certifications: "Tous nos instructeurs sont certifiés par la Fédération Espagnole de Surf (FES) et détiennent des certifications actuelles en premiers secours et sauvetage aquatique.",
