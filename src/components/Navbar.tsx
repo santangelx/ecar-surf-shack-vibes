@@ -50,8 +50,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
-          <Link to={routePaths[language].home} className="text-2xl font-bold text-ocean-dark">
-            OpenSea
+          <Link to={routePaths[language].home} className="flex items-center">
+            <img 
+              src="/logo.png" 
+              alt="OpenSea Kayak & Paddle Surf Almuñécar" 
+              className="h-12 w-12 rounded-full object-cover"
+            />
           </Link>
           
           {/* Desktop Navigation */}

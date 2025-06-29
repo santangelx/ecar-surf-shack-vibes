@@ -20,7 +20,7 @@ const Location = () => {
               <div className="flex items-start gap-3 mb-4">
                 <MapPin className="h-6 w-6 text-ocean mt-1" />
                 <div>
-                  <h3 className="text-xl font-bold text-ocean-dark">OpenSea Almuñecar</h3>
+                  <h3 className="text-xl font-bold text-ocean-dark">Open Sea</h3>
                   <p className="text-gray-700">
                     Pl. San Cristóbal<br />
                     18690 Almuñécar<br />
@@ -36,7 +36,7 @@ const Location = () => {
                 
                 <div className="mt-6">
                   <a 
-                    href="https://maps.google.com/?q=36.729069,-3.694842" 
+                    href="https://maps.google.com/?q=36.7294014,-3.695261" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="btn-primary inline-flex items-center gap-2"
@@ -50,7 +50,7 @@ const Location = () => {
             
             <div className="md:w-1/2 h-72 md:h-auto">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.3!2d-3.694842!3d36.729069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDQzJzQ0LjYiTiAzwrA0MSczOS40Ilc!5e0!3m2!1sen!2ses!4v1716400674084!5m2!1sen!2ses"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.3!2d-3.695261!3d36.7294014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd7189a876287c0f:0x38a35eb411bcec10!2sOpen+Sea!5e0!3m2!1sen!2ses!4v1716400674084!5m2!1sen!2ses"
                 width="100%" 
                 height="100%" 
                 style={{ border: 0 }} 

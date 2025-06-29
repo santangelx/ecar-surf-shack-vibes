@@ -28,9 +28,9 @@ const SchemaMarkup = () => {
     "@type": "SportsActivityLocation",
     "name": "OpenSea Kayak & Paddle Surf",
     "image": [
-      "https://opensea-almunecar.com/images/kayak-beach.jpg",
-      "https://opensea-almunecar.com/images/paddle-surf.jpg",
-      "https://opensea-almunecar.com/images/location.jpg"
+      "https://opensea-almunecar.com/logo.png",
+      "https://opensea-almunecar.com/images/kayak.png",
+      "https://opensea-almunecar.com/images/paddle.png"
     ],
     "address": {
       "@type": "PostalAddress",

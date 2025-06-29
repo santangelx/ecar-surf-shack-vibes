@@ -10,41 +10,41 @@ const AboutUs = () => {
     en: {
       title: "About OpenSea - Your Local Water Sports Experts",
       subtitle: "Operating on Playa de San Cristóbal since 2015",
-      description: "Founded by passionate water sports enthusiasts, OpenSea has been introducing visitors and locals to the beauty of Costa Tropical's coastline for nearly a decade. Our team of certified instructors and local guides ensures safe, memorable experiences on the Mediterranean.",
+      description: "Founded by passionate water sports enthusiasts, OpenSea has been introducing visitors and locals to the beauty of Costa Tropical's coastline for 5 years. Our team of experienced kayak and paddle board instructors ensures safe, memorable experiences on the Mediterranean.",
       stats: [
         { icon: Clock, label: "Years of Experience", value: "5+" },
         { icon: Users, label: "Happy Customers", value: "1,000+" },
         { icon: Award, label: "5-Star Reviews", value: "50+" },
         { icon: Shield, label: "Safety Record", value: "100%" }
       ],
-      certifications: "All our instructors are certified by the Spanish Federation of Surfing and Paddling (FES) and hold current first aid and water rescue certifications.",
-      commitment: "We're committed to sustainable tourism and protecting our beautiful marine environment. All our activities follow eco-friendly practices to preserve Costa Tropical for future generations."
+      certifications: "Our experienced team specializes in kayak rentals and paddle board instruction, providing expert guidance for all skill levels. We prioritize safety and fun in every water sports adventure.",
+      commitment: "We're committed to sustainable tourism and protecting our beautiful marine environment. All our kayak and paddle board activities follow eco-friendly practices to preserve Costa Tropical for future generations."
     },
     es: {
       title: "Sobre OpenSea - Tus Expertos Locales en Deportes Acuáticos",
       subtitle: "Operando en Playa de San Cristóbal desde 2015",
-      description: "Fundada por apasionados de los deportes acuáticos, OpenSea ha estado introduciendo a visitantes y locales a la belleza de la costa de la Costa Tropical durante casi una década. Nuestro equipo de instructores certificados y guías locales garantiza experiencias seguras y memorables en el Mediterráneo.",
+      description: "Fundada por apasionados de los deportes acuáticos, OpenSea ha estado introduciendo a visitantes y locales a la belleza de la costa de la Costa Tropical durante 5 años. Nuestro equipo de instructores experimentados en kayak y paddle surf garantiza experiencias seguras y memorables en el Mediterráneo.",
       stats: [
         { icon: Clock, label: "Años de Experiencia", value: "5+" },
         { icon: Users, label: "Clientes Satisfechos", value: "1,000+" },
         { icon: Award, label: "Reseñas 5 Estrellas", value: "50+" },
         { icon: Shield, label: "Record de Seguridad", value: "100%" }
       ],
-      certifications: "Todos nuestros instructores están certificados por la Federación Española de Surf (FES) y poseen certificaciones actuales de primeros auxilios y rescate acuático.",
-      commitment: "Estamos comprometidos con el turismo sostenible y la protección de nuestro hermoso entorno marino. Todas nuestras actividades siguen prácticas eco-amigables para preservar la Costa Tropical para las futuras generaciones."
+      certifications: "Nuestro equipo experimentado se especializa en alquiler de kayaks e instrucción de paddle surf, proporcionando orientación experta para todos los niveles. Priorizamos la seguridad y la diversión en cada aventura acuática.",
+      commitment: "Estamos comprometidos con el turismo sostenible y la protección de nuestro hermoso entorno marino. Todas nuestras actividades de kayak y paddle surf siguen prácticas eco-amigables para preservar la Costa Tropical para las futuras generaciones."
     },
     fr: {
       title: "À Propos d'OpenSea - Vos Experts Locaux en Sports Nautiques",
       subtitle: "Opérant sur Playa de San Cristóbal depuis 2015",
-      description: "Fondée par des passionnés de sports nautiques, OpenSea initie les visiteurs et les locaux à la beauté du littoral de la Costa Tropical depuis près d'une décennie. Notre équipe d'instructeurs certifiés et de guides locaux garantit des expériences sûres et mémorables sur la Méditerranée.",
+      description: "Fondée par des passionnés de sports nautiques, OpenSea initie les visiteurs et les locaux à la beauté du littoral de la Costa Tropical depuis 5 ans. Notre équipe d'instructeurs expérimentés en kayak et paddle garantit des expériences sûres et mémorables sur la Méditerranée.",
       stats: [
         { icon: Clock, label: "Années d'Expérience", value: "5+" },
         { icon: Users, label: "Clients Satisfaits", value: "1,000+" },
         { icon: Award, label: "Avis 5 Étoiles", value: "50+" },
         { icon: Shield, label: "Record de Sécurité", value: "100%" }
       ],
-      certifications: "Tous nos instructeurs sont certifiés par la Fédération Espagnole de Surf (FES) et détiennent des certifications actuelles en premiers secours et sauvetage aquatique.",
-      commitment: "Nous sommes engagés dans le tourisme durable et la protection de notre magnifique environnement marin. Toutes nos activités suivent des pratiques éco-responsables pour préserver la Costa Tropical pour les générations futures."
+      certifications: "Notre équipe expérimentée se spécialise dans la location de kayaks et l'instruction de paddle, fournissant des conseils experts pour tous les niveaux. Nous priorisons la sécurité et le plaisir dans chaque aventure aquatique.",
+      commitment: "Nous sommes engagés dans le tourisme durable et la protection de notre magnifique environnement marin. Toutes nos activités de kayak et paddle suivent des pratiques éco-responsables pour préserver la Costa Tropical pour les générations futures."
     }
   };
   
@@ -81,7 +81,7 @@ const AboutUs = () => {
           {/* Trust Signals */}
           <div className="text-center">
             <img 
-              src="/lovable-uploads/kayak.jpeg" 
+              src="/images/kayak.png" 
               alt="OpenSea team providing kayak instruction at Playa San Cristóbal, Almuñécar"
               className="rounded-lg shadow-lg mx-auto mb-4 max-w-full h-auto"
               loading="lazy"

@@ -1806,7 +1806,7 @@ const Services = () => {
         /* @__PURE__ */ jsx("div", { className: "h-64 overflow-hidden", children: /* @__PURE__ */ jsx(
           "img",
           {
-            src: "/lovable-uploads/kayak.jpeg",
+            src: "/images/kayak.png",
             alt: "Kayak rental service in Almuñécar beach - Double and single kayaks available for exploring Costa Tropical coastline",
             className: "w-full h-full object-cover transition-transform duration-300 hover:scale-105",
             loading: "lazy",
@@ -1827,7 +1827,7 @@ const Services = () => {
         /* @__PURE__ */ jsx("div", { className: "h-64 overflow-hidden", children: /* @__PURE__ */ jsx(
           "img",
           {
-            src: "/lovable-uploads/paddle.jpeg",
+            src: "/images/paddle.png",
             alt: "Stand up paddle board (SUP) rental in Almuñécar - Professional boards for beginners and advanced paddlers on Mediterranean Sea",
             className: "w-full h-full object-cover transition-transform duration-300 hover:scale-105",
             loading: "lazy",
@@ -2326,7 +2326,7 @@ const AboutUs = () => {
       /* @__PURE__ */ jsx(
         "img",
         {
-          src: "/lovable-uploads/kayak.jpeg",
+          src: "/images/kayak.png",
           alt: "OpenSea team providing kayak instruction at Playa San Cristóbal, Almuñécar",
           className: "rounded-lg shadow-lg mx-auto mb-4 max-w-full h-auto",
           loading: "lazy",

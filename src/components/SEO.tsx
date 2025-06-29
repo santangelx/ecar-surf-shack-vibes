@@ -16,7 +16,7 @@ const SEO: React.FC<SEOProps> = ({
   title, 
   description, 
   keywords,
-  image = 'https://opensea-almunecar.com/images/og-default.jpg',
+  image = 'https://opensea-almunecar.com/logo.png',
   type = 'website',
   structuredData
 }) => {

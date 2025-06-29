@@ -19,7 +19,7 @@ const Services = () => {
           <Card className="overflow-hidden bg-white/70 backdrop-blur-sm border border-ocean-light hover:shadow-lg transition-shadow">
             <div className="h-64 overflow-hidden">
               <img 
-                src="/lovable-uploads/kayak.jpeg"
+                src="/images/kayak.png"
                 alt="Kayak rental service in Almuñécar beach - Double and single kayaks available for exploring Costa Tropical coastline" 
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 loading="lazy"
@@ -44,7 +44,7 @@ const Services = () => {
           <Card className="overflow-hidden bg-white/70 backdrop-blur-sm border border-ocean-light hover:shadow-lg transition-shadow">
             <div className="h-64 overflow-hidden">
               <img 
-                src="/lovable-uploads/paddle.jpeg"
+                src="/images/paddle.png"
                 alt="Stand up paddle board (SUP) rental in Almuñécar - Professional boards for beginners and advanced paddlers on Mediterranean Sea" 
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                 loading="lazy"
