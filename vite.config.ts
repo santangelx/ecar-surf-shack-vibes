@@ -83,10 +83,21 @@ export default defineConfig(({ mode }) => ({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
-          'utils': ['clsx', 'class-variance-authority', 'tailwind-merge'],
+        manualChunks: (id) => {
+          // Skip manual chunks for SSR builds to avoid conflicts
+          if (process.env.VITE_SSG) return;
+          
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router')) {
+              return 'react-vendor';
+            }
+            if (id.includes('@radix-ui')) {
+              return 'ui-vendor';
+            }
+            if (id.includes('clsx') || id.includes('class-variance-authority') || id.includes('tailwind-merge')) {
+              return 'utils';
+            }
+          }
         }
       }
     },
@@ -103,5 +114,9 @@ export default defineConfig(({ mode }) => ({
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom'],
     exclude: ['@vite-pwa/assets-generator']
+  },
+  // SSR configuration
+  ssr: {
+    noExternal: ['react-helmet-async']
   }
 }));
