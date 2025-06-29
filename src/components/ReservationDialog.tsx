@@ -39,7 +39,7 @@ const ReservationDialog = ({ children }: { children: React.ReactNode }) => {
   const [activity, setActivity] = useState<string>('kayak');
   const [duration, setDuration] = useState<string>('1');
   const [date, setDate] = useState<Date | undefined>(undefined);
-  const [time, setTime] = useState<string>('10:00');
+  const [time, setTime] = useState<string>('11:00');
   const [price, setPrice] = useState<number>(12);
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -82,7 +82,7 @@ const ReservationDialog = ({ children }: { children: React.ReactNode }) => {
     setActivity('kayak');
     setDuration('1');
     setDate(undefined);
-    setTime('10:00');
+    setTime('11:00');
     setName('');
     setEmail('');
     setPhone('');

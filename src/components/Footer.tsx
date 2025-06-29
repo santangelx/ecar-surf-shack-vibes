@@ -42,7 +42,7 @@ const Footer = () => {
                 <Clock className="h-5 w-5 text-ocean-light" />
                 <div>
                   <p className="font-medium">{t('everyday')}</p>
-                  <p className="text-sm">10:00 AM - 8:00 PM</p>
+                  <p className="text-sm">11:00 AM - 8:00 PM</p>
                 </div>
               </li>
               <li className="flex items-center gap-2">

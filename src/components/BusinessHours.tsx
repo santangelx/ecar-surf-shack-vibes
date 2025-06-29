@@ -26,7 +26,7 @@ const BusinessHours = () => {
             <div className="space-y-4">
               <div className="flex justify-between items-center py-3 border-b border-gray-200">
                 <span className="font-medium text-gray-700">{t('everyday')}</span>
-                <span className="text-ocean font-semibold">10:00 AM - 8:00 PM</span>
+                <span className="text-ocean font-semibold">11:00 AM - 8:00 PM</span>
               </div>
             </div>
             <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">

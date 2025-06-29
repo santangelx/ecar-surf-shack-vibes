@@ -19,7 +19,7 @@ const Services = () => {
           <Card className="overflow-hidden bg-white/70 backdrop-blur-sm border border-ocean-light hover:shadow-lg transition-shadow">
             <div className="h-64 overflow-hidden">
               <img 
-                src="/lovable-uploads/5e08f0d9-8502-4ee0-a47a-b43d36dbe8b6.png"
+                src="/lovable-uploads/kayak.jpeg"
                 alt="Kayak rental in Almuñecar" 
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
               />
@@ -41,7 +41,7 @@ const Services = () => {
           <Card className="overflow-hidden bg-white/70 backdrop-blur-sm border border-ocean-light hover:shadow-lg transition-shadow">
             <div className="h-64 overflow-hidden">
               <img 
-                src="/lovable-uploads/1af5e8d5-175a-4a02-9fb4-6a93a1728eee.png"
+                src="/lovable-uploads/paddle.jpeg"
                 alt="Paddle Surf in Almuñecar" 
                 className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
               />
