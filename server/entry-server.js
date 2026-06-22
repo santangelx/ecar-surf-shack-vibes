@@ -1078,20 +1078,17 @@ const routePaths = {
   en: {
     home: "/",
     kayak: "/kayak-rental-almunecar",
-    paddle: "/paddle-board-almunecar",
-    activities: "/sea-activities-costa-tropical"
+    paddle: "/paddle-board-almunecar"
   },
   es: {
     home: "/es",
     kayak: "/es/alquiler-kayak-almunecar",
-    paddle: "/es/paddle-surf-almunecar",
-    activities: "/es/actividades-maritimas-costa-tropical"
+    paddle: "/es/paddle-surf-almunecar"
   },
   fr: {
     home: "/fr",
     kayak: "/fr/location-kayak-almunecar",
-    paddle: "/fr/paddle-board-almunecar",
-    activities: "/fr/activites-maritimes-costa-tropical"
+    paddle: "/fr/paddle-board-almunecar"
   }
 };
 const ROUTES = Object.values(routePaths).flatMap(
@@ -1133,7 +1130,7 @@ const translations = {
     // Prices
     ourPrices: "Our Prices",
     affordable: "Affordable adventures for everyone",
-    includeLife: "Prices include life jacket and basic instruction.",
+    includeLife: "Prices include life jacket and paddle.",
     allEquipment: "All equipment included.",
     type: "Type",
     oneHour: "1 Hour",
@@ -1217,7 +1214,7 @@ const translations = {
     // Prices
     ourPrices: "Nuestros Precios",
     affordable: "Aventuras asequibles para todos",
-    includeLife: "Los precios incluyen chaleco salvavidas e instrucción básica.",
+    includeLife: "Los precios incluyen chaleco salvavidas y remo.",
     allEquipment: "Todo el equipo incluido.",
     type: "Tipo",
     oneHour: "1 Hora",
@@ -1301,7 +1298,7 @@ const translations = {
     // Prices
     ourPrices: "Nos Prix",
     affordable: "Des aventures abordables pour tous",
-    includeLife: "Les prix incluent un gilet de sauvetage et une instruction de base.",
+    includeLife: "Les prix incluent un gilet de sauvetage et une pagaie.",
     allEquipment: "Tout l'équipement inclus.",
     type: "Type",
     oneHour: "1 Heure",
@@ -1368,8 +1365,6 @@ const LanguageProvider = ({ children }) => {
       routeType = "kayak";
     } else if (currentPath.includes("paddle")) {
       routeType = "paddle";
-    } else if (currentPath.includes("activities") || currentPath.includes("actividades") || currentPath.includes("activites")) {
-      routeType = "activities";
     }
     const newPath = routePaths[newLanguage][routeType];
     navigate(newPath);
@@ -1567,8 +1562,7 @@ const Navbar = () => {
   const links = [
     { to: paths.home, label: t("home") },
     { to: paths.kayak, label: t("kayakRentals") },
-    { to: paths.paddle, label: t("paddleBoardNav") },
-    { to: paths.activities, label: t("seaActivities") }
+    { to: paths.paddle, label: t("paddleBoardNav") }
   ];
   const linkStyle = (to) => ({
     fontFamily: "'Hanken Grotesk', sans-serif",
@@ -1739,7 +1733,7 @@ const Hero = () => {
             "img",
             {
               src: "/images/paddle-1200w.jpg",
-              alt: "Paddle surf y SUP yoga en el mar Mediterráneo de Almuñécar, Costa Tropical",
+              alt: "Paddle surf en el mar Mediterráneo de Almuñécar, Costa Tropical",
               ...{ fetchpriority: "high" },
               decoding: "async",
               style: { position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }
@@ -1882,50 +1876,61 @@ const Services = () => {
     ] }, c.title)) })
   ] }) });
 };
+const PRODUCTS = {
+  twoPersonKayak: {
+    nameKey: "twoPersonKayak",
+    noteKey: "includeLife",
+    rows: [
+      { labelKey: "oneHour", price: "€15" },
+      { labelKey: "twoHours", price: "€25" },
+      { labelKey: "halfDay", price: "€35" },
+      { labelKey: "day", price: "€60" }
+    ]
+  },
+  onePersonKayak: {
+    nameKey: "onePersonKayak",
+    noteKey: "includeLife",
+    rows: [
+      { labelKey: "oneHour", price: "€10" },
+      { labelKey: "twoHours", price: "€18" },
+      { labelKey: "halfDay", price: "€30" },
+      { labelKey: "day", price: "€50" }
+    ]
+  },
+  paddleSurf: {
+    nameKey: "paddleSurf",
+    noteKey: "allEquipment",
+    rows: [
+      { labelKey: "oneHour", price: "€12" },
+      { labelKey: "twoHours", price: "€20" },
+      { labelKey: "halfDay", price: "€30" },
+      { labelKey: "day", price: "€50" }
+    ]
+  },
+  waterBike: {
+    nameKey: "waterBike",
+    noteKey: "allEquipment",
+    rows: [
+      { labelKey: "thirtyMinutes", price: "€15" },
+      { labelKey: "oneHour", price: "€20" },
+      { labelKey: "halfDay", price: "€50" },
+      { labelKey: "day", price: "€90" }
+    ]
+  }
+};
+const HOME_PRODUCTS = [
+  PRODUCTS.twoPersonKayak,
+  PRODUCTS.onePersonKayak,
+  PRODUCTS.paddleSurf,
+  PRODUCTS.waterBike
+];
 const Prices = () => {
   const { t } = useLanguage();
-  const products = [
-    {
-      name: t("twoPersonKayak"),
-      note: t("includeLife"),
-      rows: [
-        [t("oneHour"), "€15"],
-        [t("twoHours"), "€25"],
-        [t("halfDay"), "€35"],
-        [t("day"), "€60"]
-      ]
-    },
-    {
-      name: t("onePersonKayak"),
-      note: t("includeLife"),
-      rows: [
-        [t("oneHour"), "€10"],
-        [t("twoHours"), "€18"],
-        [t("halfDay"), "€30"],
-        [t("day"), "€50"]
-      ]
-    },
-    {
-      name: t("paddleSurf"),
-      note: t("allEquipment"),
-      rows: [
-        [t("oneHour"), "€12"],
-        [t("twoHours"), "€20"],
-        [t("halfDay"), "€30"],
-        [t("day"), "€50"]
-      ]
-    },
-    {
-      name: t("waterBike"),
-      note: t("allEquipment"),
-      rows: [
-        [t("thirtyMinutes"), "€15"],
-        [t("oneHour"), "€20"],
-        [t("halfDay"), "€50"],
-        [t("day"), "€90"]
-      ]
-    }
-  ];
+  const products = HOME_PRODUCTS.map((p) => ({
+    name: t(p.nameKey),
+    note: t(p.noteKey),
+    rows: p.rows.map((r) => [t(r.labelKey), r.price])
+  }));
   return /* @__PURE__ */ jsx("section", { id: "precios", style: { scrollMarginTop: 80, padding: "clamp(72px,11vw,150px) clamp(20px,6vw,96px)", background: "#11313E", color: "#fff" }, children: /* @__PURE__ */ jsxs("div", { style: { maxWidth: 1280, margin: "0 auto" }, children: [
     /* @__PURE__ */ jsx(SectionEyebrow, { number: "02", label: t("ourPrices"), labelColor: "#6FC5DC" }),
     /* @__PURE__ */ jsx("h2", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(32px,6vw,68px)", lineHeight: 0.98, letterSpacing: "-.02em", margin: "0 0 clamp(40px,6vw,72px)", textWrap: "balance" }, children: t("affordable") }),
@@ -2040,7 +2045,6 @@ const Footer = () => {
         /* @__PURE__ */ jsxs("ul", { style: { listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 12 }, children: [
           /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(Link, { to: paths.kayak, style: linkStyle, children: t("kayakRentals") }) }),
           /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(Link, { to: paths.paddle, style: linkStyle, children: t("paddleBoardNav") }) }),
-          /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(Link, { to: paths.activities, style: linkStyle, children: t("seaActivities") }) }),
           /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx("a", { href: MAPS_DIRECTIONS_URL, target: "_blank", rel: "noopener noreferrer", style: linkStyle, children: t("location") }) })
         ] })
       ] }),
@@ -2078,7 +2082,7 @@ const SEO = ({
   const { language, routePaths: routePaths2 } = useLanguage();
   const path = stripTrailingSlash(location.pathname);
   const currentUrl = `${SITE_URL}${path}`;
-  const types = ["home", "kayak", "paddle", "activities"];
+  const types = ["home", "kayak", "paddle"];
   const langs = ["en", "es", "fr"];
   let routeType = "home";
   for (const t of types) {
@@ -2159,44 +2163,26 @@ const AboutUs = () => {
     en: {
       title: "About OpenSea — Your Local Water Sports Experts",
       subtitle: "Operating on Playa de San Cristóbal since 2015",
-      description: "Founded by passionate water sports enthusiasts, OpenSea has been introducing visitors and locals to the beauty of the Costa Tropical's coastline. Our team of experienced kayak and paddle surf instructors ensures safe, memorable experiences on the Mediterranean.",
-      certifications: "Our experienced team specializes in kayak rentals and paddle surf instruction, providing expert guidance for all skill levels. We prioritize safety and fun on every water sports adventure.",
+      description: "Founded by passionate water sports enthusiasts, OpenSea has been introducing visitors and locals to the beauty of the Costa Tropical's coastline. We rent quality kayaks and paddle boards right on the beach so everyone can enjoy the Mediterranean safely.",
+      certifications: "We specialize in kayak and paddle surf rentals for all ages and skill levels, with stable equipment and life jackets included. We prioritize safety and fun on the water.",
       commitment: "We are committed to sustainable tourism and protecting our beautiful marine environment. All our kayak and paddle surf activities follow eco-friendly practices to preserve the Costa Tropical for future generations.",
-      stats: [
-        { label: "Years of Experience", value: "5+" },
-        { label: "Happy Customers", value: "1,000+" },
-        { label: "5-Star Reviews", value: "50+" },
-        { label: "Safety Record", value: "100%" }
-      ],
-      caption: "Our experienced team ready to guide you on your Mediterranean adventure"
+      caption: "Quality kayaks and paddle boards on Playa de San Cristóbal, ready for your Mediterranean day out"
     },
     es: {
       title: "Sobre OpenSea — Tus Expertos Locales en Deportes Acuáticos",
       subtitle: "Operando en Playa de San Cristóbal desde 2015",
-      description: "Fundada por apasionados de los deportes acuáticos, OpenSea lleva años introduciendo a visitantes y locales a la belleza de la costa de la Costa Tropical. Nuestro equipo de instructores experimentados en kayak y paddle surf garantiza experiencias seguras y memorables en el Mediterráneo.",
-      certifications: "Nuestro equipo experimentado se especializa en alquiler de kayaks e instrucción de paddle surf, proporcionando orientación experta para todos los niveles. Priorizamos la seguridad y la diversión en cada aventura acuática.",
+      description: "Fundada por apasionados de los deportes acuáticos, OpenSea lleva años acercando a visitantes y locales a la belleza de la costa de la Costa Tropical. Alquilamos kayaks y tablas de paddle de calidad en la misma playa para que todos disfruten del Mediterráneo con seguridad.",
+      certifications: "Nos especializamos en el alquiler de kayaks y paddle surf para todas las edades y niveles, con equipo estable y chaleco salvavidas incluido. Priorizamos la seguridad y la diversión en el agua.",
       commitment: "Estamos comprometidos con el turismo sostenible y la protección de nuestro hermoso entorno marino. Todas nuestras actividades de kayak y paddle surf siguen prácticas eco-amigables para preservar la Costa Tropical para las futuras generaciones.",
-      stats: [
-        { label: "Años de Experiencia", value: "5+" },
-        { label: "Clientes Satisfechos", value: "1.000+" },
-        { label: "Reseñas 5 Estrellas", value: "50+" },
-        { label: "Record de Seguridad", value: "100%" }
-      ],
-      caption: "Nuestro equipo experimentado listo para guiarte en tu aventura mediterránea"
+      caption: "Kayaks y tablas de paddle de calidad en la Playa de San Cristóbal, listos para tu día en el Mediterráneo"
     },
     fr: {
       title: "À Propos d'OpenSea — Vos Experts Locaux en Sports Nautiques",
       subtitle: "Présents sur la Playa de San Cristóbal depuis 2015",
-      description: "Fondée par des passionnés de sports nautiques, OpenSea initie depuis des années les visiteurs et les locaux à la beauté du littoral de la Costa Tropical. Notre équipe d'instructeurs expérimentés en kayak et paddle surf garantit des expériences sûres et mémorables sur la Méditerranée.",
-      certifications: "Notre équipe expérimentée se spécialise dans la location de kayaks et l'instruction de paddle surf, offrant des conseils experts pour tous les niveaux. Nous priorisons la sécurité et le plaisir à chaque aventure nautique.",
+      description: "Fondée par des passionnés de sports nautiques, OpenSea initie depuis des années les visiteurs et les locaux à la beauté du littoral de la Costa Tropical. Nous louons des kayaks et des planches de paddle de qualité directement sur la plage pour que chacun profite de la Méditerranée en toute sécurité.",
+      certifications: "Nous sommes spécialisés dans la location de kayaks et de paddle surf pour tous les âges et niveaux, avec un matériel stable et un gilet de sauvetage inclus. Nous priorisons la sécurité et le plaisir sur l'eau.",
       commitment: "Nous sommes engagés dans un tourisme durable et la protection de notre magnifique environnement marin. Toutes nos activités de kayak et paddle surf suivent des pratiques éco-responsables pour préserver la Costa Tropical pour les générations futures.",
-      stats: [
-        { label: "Années d'Expérience", value: "5+" },
-        { label: "Clients Satisfaits", value: "1 000+" },
-        { label: "Avis 5 Étoiles", value: "50+" },
-        { label: "Record de Sécurité", value: "100%" }
-      ],
-      caption: "Notre équipe expérimentée prête à vous guider dans votre aventure méditerranéenne"
+      caption: "Kayaks et planches de paddle de qualité sur la Playa de San Cristóbal, prêts pour votre journée en Méditerranée"
     }
   };
   const data = content[language];
@@ -2204,23 +2190,17 @@ const AboutUs = () => {
     /* @__PURE__ */ jsx(SectionEyebrow, { number: "05", label: t("aboutUs") }),
     /* @__PURE__ */ jsx("h2", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(30px,5vw,60px)", lineHeight: 1, letterSpacing: "-.02em", margin: "0 0 6px", maxWidth: "22ch", textWrap: "balance" }, children: data.title }),
     /* @__PURE__ */ jsx("p", { style: { fontSize: "clamp(18px,2vw,22px)", color: "#0E7C99", fontWeight: 600, margin: "0 0 clamp(40px,6vw,64px)" }, children: data.subtitle }),
-    /* @__PURE__ */ jsxs("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: "clamp(32px,5vw,72px)", alignItems: "start" }, children: [
-      /* @__PURE__ */ jsxs("div", { children: [
-        /* @__PURE__ */ jsx("p", { style: { fontSize: 18, lineHeight: 1.7, margin: "0 0 22px", color: "#11313E" }, children: data.description }),
-        /* @__PURE__ */ jsx("p", { style: { fontSize: 16, lineHeight: 1.7, margin: "0 0 22px", color: "rgba(17,49,62,.74)" }, children: data.certifications }),
-        /* @__PURE__ */ jsx("p", { style: { fontSize: 16, lineHeight: 1.7, margin: 0, color: "rgba(17,49,62,.74)", fontStyle: "italic" }, children: data.commitment })
-      ] }),
-      /* @__PURE__ */ jsx("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(14px,2vw,20px)" }, children: data.stats.map((s) => /* @__PURE__ */ jsxs("div", { style: { background: "#fff", borderRadius: 18, padding: "clamp(22px,2.6vw,32px)", textAlign: "center" }, children: [
-        /* @__PURE__ */ jsx("div", { className: "font-display", style: { fontWeight: 900, fontSize: "clamp(34px,4vw,48px)", color: "#0E7C99", letterSpacing: "-.02em" }, children: s.value }),
-        /* @__PURE__ */ jsx("div", { style: { fontSize: 14, color: "rgba(17,49,62,.7)", marginTop: 6 }, children: s.label })
-      ] }, s.label)) })
-    ] }),
+    /* @__PURE__ */ jsx("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: "clamp(32px,5vw,72px)", alignItems: "start" }, children: /* @__PURE__ */ jsxs("div", { children: [
+      /* @__PURE__ */ jsx("p", { style: { fontSize: 18, lineHeight: 1.7, margin: "0 0 22px", color: "#11313E" }, children: data.description }),
+      /* @__PURE__ */ jsx("p", { style: { fontSize: 16, lineHeight: 1.7, margin: "0 0 22px", color: "rgba(17,49,62,.74)" }, children: data.certifications }),
+      /* @__PURE__ */ jsx("p", { style: { fontSize: 16, lineHeight: 1.7, margin: 0, color: "rgba(17,49,62,.74)", fontStyle: "italic" }, children: data.commitment })
+    ] }) }),
     /* @__PURE__ */ jsxs("figure", { style: { margin: "clamp(40px,6vw,72px) 0 0" }, children: [
       /* @__PURE__ */ jsx("div", { style: { borderRadius: 24, overflow: "hidden", aspectRatio: "16 / 8", boxShadow: "0 30px 70px -38px rgba(17,49,62,.45)" }, children: /* @__PURE__ */ jsx(
         OptimizedImage,
         {
           src: "/images/kayak.png",
-          alt: "Equipo de OpenSea ofreciendo instrucción de kayak en la Playa de San Cristóbal, Almuñécar",
+          alt: "Kayaks de alquiler de OpenSea en la Playa de San Cristóbal, Almuñécar",
           sizes: "(max-width: 1280px) 100vw, 1280px"
         }
       ) }),
@@ -2232,15 +2212,15 @@ const FAQ = {
   es: [
     {
       q: "¿Qué actividades acuáticas hay disponibles en Almuñécar?",
-      a: "Ofrecemos alquiler de kayaks, alquiler de tablas de paddle surf (SUP), bicicletas de agua, tours guiados en kayak, clases de SUP yoga y tours de paddle al amanecer y atardecer por la Costa Tropical."
+      a: "Alquilamos kayaks individuales y dobles, tablas de paddle surf (SUP) y bicicletas de agua en la Playa de San Cristóbal, Almuñécar."
     },
     {
       q: "¿Necesito experiencia para los deportes acuáticos en Almuñécar?",
-      a: "¡No se necesita experiencia! Nuestro equipo estable y las aguas tranquilas de la bahía son perfectos para principiantes. Proporcionamos instrucción básica y todo el equipo de seguridad."
+      a: "¡No se necesita experiencia! Nuestro equipo estable y las aguas tranquilas de la bahía son perfectos para principiantes. Te explicamos lo básico antes de salir y proporcionamos todo el equipo de seguridad."
     },
     {
       q: "¿Qué incluye el precio del alquiler?",
-      a: "Todos los alquileres incluyen el equipo (kayak o tabla de SUP), remo, chaleco salvavidas e instrucción básica. En los tours también proporcionamos bolsas impermeables y guías experimentados."
+      a: "Todos los alquileres incluyen el equipo (kayak o tabla de SUP), el remo y el chaleco salvavidas."
     },
     {
       q: "¿Cuáles son las mejores condiciones para los deportes acuáticos en la Costa Tropical?",
@@ -2254,15 +2234,15 @@ const FAQ = {
   en: [
     {
       q: "What water activities are available in Almuñécar?",
-      a: "We offer kayak rental, stand-up paddle board (SUP) rental, water bikes, guided kayak tours, SUP yoga classes, and sunrise and sunset paddle tours along the Costa Tropical."
+      a: "We rent single and double kayaks, stand-up paddle boards (SUP), and water bikes on Playa de San Cristóbal, Almuñécar."
     },
     {
       q: "Do I need experience for water sports in Almuñécar?",
-      a: "No experience needed! Our stable equipment and the calm bay waters are perfect for beginners. We provide basic instruction and all safety equipment."
+      a: "No experience needed! Our stable equipment and the calm bay waters are perfect for beginners. We show you the basics before you set off and provide all safety equipment."
     },
     {
       q: "What does the rental price include?",
-      a: "Every rental includes the equipment (kayak or SUP board), paddle, life jacket, and basic instruction. Tours also include dry bags for your belongings and experienced guides."
+      a: "Every rental includes the equipment (kayak or SUP board), paddle, and life jacket."
     },
     {
       q: "What are the best conditions for water sports on the Costa Tropical?",
@@ -2276,15 +2256,15 @@ const FAQ = {
   fr: [
     {
       q: "Quelles activités nautiques sont disponibles à Almuñécar ?",
-      a: "Nous proposons la location de kayaks, la location de planches de paddle surf (SUP), des vélos aquatiques, des excursions guidées en kayak, des cours de SUP yoga et des sorties paddle au lever et au coucher du soleil sur la Costa Tropical."
+      a: "Nous louons des kayaks simples et doubles, des planches de paddle surf (SUP) et des vélos aquatiques sur la Playa de San Cristóbal, Almuñécar."
     },
     {
       q: "Ai-je besoin d'expérience pour les sports nautiques à Almuñécar ?",
-      a: "Aucune expérience requise ! Notre matériel stable et les eaux calmes de la baie sont parfaits pour les débutants. Nous fournissons une initiation et tout l'équipement de sécurité."
+      a: "Aucune expérience requise ! Notre matériel stable et les eaux calmes de la baie sont parfaits pour les débutants. Nous vous expliquons les bases avant le départ et fournissons tout l'équipement de sécurité."
     },
     {
       q: "Que comprend le prix de la location ?",
-      a: "Chaque location comprend le matériel (kayak ou planche SUP), la pagaie, le gilet de sauvetage et une initiation. Les excursions incluent aussi des sacs étanches et des guides expérimentés."
+      a: "Chaque location comprend le matériel (kayak ou planche SUP), la pagaie et le gilet de sauvetage."
     },
     {
       q: "Quelles sont les meilleures conditions pour les sports nautiques sur la Costa Tropical ?",
@@ -2402,18 +2382,18 @@ const Index = () => {
   const seoData = {
     en: {
       title: "OpenSea Kayak & Paddle Surf Almuñécar | Water Sports Costa Tropical",
-      description: "Rent kayaks and paddle boards in Almuñécar, Granada. Experience the Mediterranean with professional equipment, guided tours, and SUP yoga. Open daily 10-19h.",
-      keywords: "kayak rental Almuñécar, paddle surf Granada, water sports Costa Tropical, SUP rental Spain, kayak tours Mediterranean, beach activities Almuñécar"
+      description: "Rent kayaks, paddle boards (SUP), and water bikes in Almuñécar, Granada. Calm-bay conditions for all ages on the Costa Tropical. Open daily 11:00–20:00.",
+      keywords: "kayak rental Almuñécar, paddle surf Almuñécar, water sports Costa Tropical, SUP rental Granada, kayak Almuñécar, beach activities Almuñécar"
     },
     es: {
       title: "OpenSea Kayak y Paddle Surf Almuñécar | Deportes Acuáticos Costa Tropical",
-      description: "Alquila kayaks y tablas de paddle en Almuñécar, Granada. Experimenta el Mediterráneo con equipo profesional, tours guiados y SUP yoga. Abierto diario 10-19h.",
-      keywords: "alquiler kayak Almuñécar, paddle surf Granada, deportes acuáticos Costa Tropical, alquiler SUP España, tours kayak Mediterráneo, actividades playa Almuñécar"
+      description: "Alquila kayaks, tablas de paddle surf (SUP) y bicicletas de agua en Almuñécar, Granada. Aguas tranquilas para todas las edades en la Costa Tropical. Abierto todos los días 11:00–20:00.",
+      keywords: "alquiler kayak Almuñécar, paddle surf Almuñécar, deportes acuáticos Costa Tropical, alquiler SUP Granada, kayak Almuñécar, actividades playa Almuñécar"
     },
     fr: {
       title: "OpenSea Kayak et Paddle Surf Almuñécar | Sports Nautiques Costa Tropical",
-      description: "Louez kayaks et planches de paddle à Almuñécar, Grenade. Découvrez la Méditerranée avec équipement professionnel, visites guidées et SUP yoga. Ouvert tous les jours 10-19h.",
-      keywords: "location kayak Almuñécar, paddle surf Grenade, sports nautiques Costa Tropical, location SUP Espagne, tours kayak Méditerranée, activités plage Almuñécar"
+      description: "Louez kayaks, planches de paddle (SUP) et vélos aquatiques à Almuñécar, Grenade. Eaux calmes pour tous les âges sur la Costa Tropical. Ouvert tous les jours 11h–20h.",
+      keywords: "location kayak Almuñécar, paddle surf Almuñécar, sports nautiques Costa Tropical, location SUP Grenade, kayak Almuñécar, activités plage Almuñécar"
     }
   };
   return /* @__PURE__ */ jsxs("div", { className: "min-h-screen", children: [
@@ -2507,9 +2487,8 @@ const KayakRental = () => {
       locationTitle: "Find Us in Almuñécar",
       features: [
         { title: "Stable & Safe Kayaks", desc: "Modern sit-on-top kayaks suitable for beginners and experts" },
-        { title: "Guided Tours Available", desc: "Explore secret beaches with our experienced local guides" },
-        { title: "All Equipment Included", desc: "Life jackets, paddles, and waterproof bags provided" },
-        { title: "Family Friendly", desc: "Double kayaks perfect for couples or parent-child adventures" }
+        { title: "All Equipment Included", desc: "Life jackets and paddles provided with every rental" },
+        { title: "Family Friendly", desc: "Double kayaks perfect for couples or parent-child outings" }
       ]
     },
     es: {
@@ -2522,9 +2501,8 @@ const KayakRental = () => {
       locationTitle: "Encuéntranos en Almuñécar",
       features: [
         { title: "Kayaks Estables y Seguros", desc: "Kayaks modernos tipo sit-on-top aptos para principiantes y expertos" },
-        { title: "Tours Guiados Disponibles", desc: "Explora playas secretas con nuestros guías locales experimentados" },
-        { title: "Todo el Equipo Incluido", desc: "Chalecos salvavidas, remos y bolsas impermeables incluidos" },
-        { title: "Ideal para Familias", desc: "Kayaks dobles perfectos para parejas o aventuras padre-hijo" }
+        { title: "Todo el Equipo Incluido", desc: "Chalecos salvavidas y remos incluidos en cada alquiler" },
+        { title: "Ideal para Familias", desc: "Kayaks dobles perfectos para parejas o salidas en familia" }
       ]
     },
     fr: {
@@ -2537,9 +2515,8 @@ const KayakRental = () => {
       locationTitle: "Trouvez-nous à Almuñécar",
       features: [
         { title: "Kayaks Stables et Sûrs", desc: "Kayaks modernes sit-on-top adaptés aux débutants et experts" },
-        { title: "Visites Guidées Disponibles", desc: "Explorez des plages secrètes avec nos guides locaux expérimentés" },
-        { title: "Tout l'Équipement Inclus", desc: "Gilets de sauvetage, pagaies et sacs étanches fournis" },
-        { title: "Convivial pour les Familles", desc: "Kayaks doubles parfaits pour couples ou aventures parent-enfant" }
+        { title: "Tout l'Équipement Inclus", desc: "Gilets de sauvetage et pagaies fournis avec chaque location" },
+        { title: "Convivial pour les Familles", desc: "Kayaks doubles parfaits pour couples ou sorties en famille" }
       ]
     }
   };
@@ -2547,18 +2524,18 @@ const KayakRental = () => {
   const seoData = {
     en: {
       title: "Kayak Rental Almuñécar | OpenSea Costa Tropical Granada",
-      description: "Rent kayaks in Almuñécar, Granada. Explore the Costa Tropical's hidden beaches and crystal-clear waters. Premium equipment, guided tours available.",
-      keywords: "kayak rental Almuñécar, kayak hire Granada, Costa Tropical kayaking, sea kayak Almuñécar, kayak tours Granada"
+      description: "Rent single and double kayaks in Almuñécar, Granada. Explore the Costa Tropical's hidden beaches and crystal-clear waters. Life jackets and paddles included.",
+      keywords: "kayak rental Almuñécar, kayak hire Granada, Costa Tropical kayaking, sea kayak Almuñécar, double kayak Almuñécar"
     },
     es: {
       title: "Alquiler de Kayak Almuñécar | OpenSea Costa Tropical Granada",
-      description: "Alquila kayaks en Almuñécar, Granada. Explora las playas ocultas y aguas cristalinas de la Costa Tropical. Equipo premium, tours guiados disponibles.",
-      keywords: "alquiler kayak Almuñécar, alquiler kayak Granada, kayak Costa Tropical, kayak de mar Almuñécar, tours kayak Granada"
+      description: "Alquila kayaks individuales y dobles en Almuñécar, Granada. Explora las playas ocultas y aguas cristalinas de la Costa Tropical. Chalecos y remos incluidos.",
+      keywords: "alquiler kayak Almuñécar, alquiler kayak Granada, kayak Costa Tropical, kayak de mar Almuñécar, kayak doble Almuñécar"
     },
     fr: {
       title: "Location de Kayak Almuñécar | OpenSea Costa Tropical Grenade",
-      description: "Louez des kayaks à Almuñécar, Grenade. Explorez les plages cachées et les eaux cristallines de la Costa Tropical. Équipement premium, visites guidées disponibles.",
-      keywords: "location kayak Almuñécar, location kayak Grenade, kayak Costa Tropical, kayak de mer Almuñécar, tours kayak Grenade"
+      description: "Louez des kayaks simples et doubles à Almuñécar, Grenade. Explorez les plages cachées et les eaux cristallines de la Costa Tropical. Gilets et pagaies inclus.",
+      keywords: "location kayak Almuñécar, location kayak Grenade, kayak Costa Tropical, kayak de mer Almuñécar, kayak double Almuñécar"
     }
   };
   const structuredData = {
@@ -2579,16 +2556,15 @@ const KayakRental = () => {
     },
     areaServed: { "@type": "Place", name: "Costa Tropical, Granada" },
     offers: [
-      { "@type": "Offer", name: "1 Hour Kayak Rental", price: "15.00", priceCurrency: "EUR" },
-      { "@type": "Offer", name: "Full Day Kayak Rental", price: "50.00", priceCurrency: "EUR" }
+      { "@type": "Offer", name: "Single Kayak Rental (1 hour)", price: "10.00", priceCurrency: "EUR" },
+      { "@type": "Offer", name: "Double Kayak Rental (1 hour)", price: "15.00", priceCurrency: "EUR" },
+      { "@type": "Offer", name: "Double Kayak Rental (full day)", price: "60.00", priceCurrency: "EUR" }
     ]
   };
-  const priceRows = [
-    [t("oneHour"), "15€"],
-    [t("twoHours"), "25€"],
-    [`${t("halfDay")} (4h)`, "35€"],
-    [`${t("day")} (8h)`, "50€"]
-  ];
+  const kayakProducts = [PRODUCTS.twoPersonKayak, PRODUCTS.onePersonKayak].map((p) => ({
+    name: t(p.nameKey),
+    rows: p.rows.map((r) => [t(r.labelKey), r.price])
+  }));
   return /* @__PURE__ */ jsxs("div", { style: { background: "#F6F3EC", color: "#11313E", overflowX: "hidden" }, children: [
     /* @__PURE__ */ jsx(
       SEO,
@@ -2619,12 +2595,15 @@ const KayakRental = () => {
         /* @__PURE__ */ jsx("p", { style: { fontSize: 16, lineHeight: 1.6, color: "rgba(17,49,62,.74)", margin: 0 }, children: f.desc })
       ] }, f.title)) })
     ] }) }),
-    /* @__PURE__ */ jsx("section", { id: "precios-kayak", style: { scrollMarginTop: 80, padding: "clamp(64px,9vw,130px) clamp(20px,6vw,96px)", background: "#11313E", color: "#fff" }, children: /* @__PURE__ */ jsxs("div", { style: { maxWidth: 760, margin: "0 auto" }, children: [
+    /* @__PURE__ */ jsx("section", { id: "precios-kayak", style: { scrollMarginTop: 80, padding: "clamp(64px,9vw,130px) clamp(20px,6vw,96px)", background: "#11313E", color: "#fff" }, children: /* @__PURE__ */ jsxs("div", { style: { maxWidth: 980, margin: "0 auto" }, children: [
       /* @__PURE__ */ jsx("h2", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(28px,4.5vw,54px)", lineHeight: 1, letterSpacing: "-.02em", margin: "0 0 clamp(32px,4vw,48px)", textAlign: "center" }, children: content.pricesTitle }),
-      /* @__PURE__ */ jsx("div", { style: { background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.12)", borderRadius: 20, overflow: "hidden" }, children: priceRows.map(([label, price], i) => /* @__PURE__ */ jsxs("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", padding: "20px clamp(22px,3vw,34px)", borderBottom: i < priceRows.length - 1 ? "1px solid rgba(255,255,255,.1)" : "none" }, children: [
-        /* @__PURE__ */ jsx("span", { style: { fontSize: 18 }, children: label }),
-        /* @__PURE__ */ jsx("span", { className: "font-display", style: { fontWeight: 800, fontSize: 24 }, children: price })
-      ] }, label)) }),
+      /* @__PURE__ */ jsx("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", gap: "clamp(16px,2vw,28px)" }, children: kayakProducts.map((product) => /* @__PURE__ */ jsxs("div", { style: { background: "rgba(255,255,255,.05)", border: "1px solid rgba(255,255,255,.12)", borderRadius: 20, padding: "clamp(24px,2.6vw,36px)" }, children: [
+        /* @__PURE__ */ jsx("h3", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(22px,2.4vw,28px)", margin: "0 0 24px", letterSpacing: "-.01em" }, children: product.name }),
+        /* @__PURE__ */ jsx("div", { style: { display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 8 }, children: product.rows.map(([label, price]) => /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsx("div", { style: { fontSize: 12, textTransform: "uppercase", letterSpacing: ".1em", color: "#6FC5DC", marginBottom: 8, lineHeight: 1.2, minHeight: "2.4em", display: "flex", alignItems: "flex-end" }, children: label }),
+          /* @__PURE__ */ jsx("div", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(22px,2.4vw,30px)" }, children: price })
+        ] }, label)) })
+      ] }, product.name)) }),
       /* @__PURE__ */ jsx("p", { style: { textAlign: "center", fontSize: 14, color: "rgba(255,255,255,.55)", margin: "22px 0 0" }, children: t("includeLife") })
     ] }) }),
     /* @__PURE__ */ jsx("section", { style: { padding: "clamp(64px,9vw,120px) clamp(20px,6vw,96px)", background: "#F6F3EC" }, children: /* @__PURE__ */ jsxs("div", { style: { maxWidth: 1280, margin: "0 auto", textAlign: "center" }, children: [
@@ -2650,71 +2629,62 @@ const PaddleBoard = () => {
     en: {
       eyebrow: "Paddle Surf · SUP · Almuñécar",
       title: "Paddle Board Almuñécar — SUP Rentals Costa Tropical",
-      subtitle: "Stand Up Paddle Board Rentals & Lessons in Granada",
-      intro: "Experience the Mediterranean Sea like never before with our premium paddle board rentals in Almuñécar. Perfect conditions for SUP with calm waters, stunning views of the Sierra Nevada, and year-round sunshine.",
+      subtitle: "Stand Up Paddle Board Rentals in Granada",
+      intro: "Experience the Mediterranean Sea like never before with our paddle board rentals in Almuñécar. Perfect conditions for SUP with calm waters, stunning views of the Sierra Nevada, and year-round sunshine.",
       whyTitle: "Why Choose Our SUP Rentals",
-      activitiesTitle: "SUP Activities in Almuñécar",
       pricesTitle: "Paddle Surf Prices",
       locationTitle: "SUP Location in Almuñécar",
-      yogaLabel: "SUP Yoga Class (90 min)",
       benefits: [
         { title: "Beginner Friendly", desc: "Stable boards and calm bay perfect for first-timers" },
-        { title: "Safety First", desc: "All equipment included with certified instructors available" },
-        { title: "Premium Equipment", desc: "Latest SUP boards from top brands for optimal performance" }
-      ],
-      activities: ["Morning SUP Yoga Sessions", "Sunset Paddle Tours", "SUP Fitness Classes", "Family Paddle Adventures"]
+        { title: "All Equipment Included", desc: "Life jackets and paddles provided with every board" },
+        { title: "Easy to Paddle", desc: "Stable boards suited to the calm waters of our bay" }
+      ]
     },
     es: {
       eyebrow: "Paddle Surf · SUP · Almuñécar",
       title: "Paddle Board Almuñécar — Alquiler SUP Costa Tropical",
-      subtitle: "Alquiler de Tablas de Paddle Surf y Clases en Granada",
-      intro: "Experimenta el Mar Mediterráneo como nunca antes con nuestro alquiler premium de paddle board en Almuñécar. Condiciones perfectas para SUP con aguas tranquilas, vistas impresionantes de Sierra Nevada y sol todo el año.",
+      subtitle: "Alquiler de Tablas de Paddle Surf en Granada",
+      intro: "Experimenta el Mar Mediterráneo como nunca antes con nuestro alquiler de paddle board en Almuñécar. Condiciones perfectas para SUP con aguas tranquilas, vistas impresionantes de Sierra Nevada y sol todo el año.",
       whyTitle: "Por Qué Elegir Nuestro Alquiler SUP",
-      activitiesTitle: "Actividades SUP en Almuñécar",
       pricesTitle: "Precios de Paddle Surf",
       locationTitle: "Ubicación SUP en Almuñécar",
-      yogaLabel: "Clase SUP Yoga (90 min)",
       benefits: [
         { title: "Ideal para Principiantes", desc: "Tablas estables y bahía tranquila perfecta para novatos" },
-        { title: "Seguridad Primero", desc: "Todo el equipo incluido con instructores certificados disponibles" },
-        { title: "Equipo Premium", desc: "Últimas tablas SUP de marcas top para rendimiento óptimo" }
-      ],
-      activities: ["Sesiones de SUP Yoga Matutinas", "Tours de Paddle al Atardecer", "Clases de SUP Fitness", "Aventuras Familiares en Paddle"]
+        { title: "Todo el Equipo Incluido", desc: "Chalecos salvavidas y remos incluidos con cada tabla" },
+        { title: "Fácil de Remar", desc: "Tablas estables ideales para las aguas tranquilas de nuestra bahía" }
+      ]
     },
     fr: {
       eyebrow: "Paddle Surf · SUP · Almuñécar",
       title: "Paddle Board Almuñécar — Location SUP Costa Tropical",
-      subtitle: "Location de Stand Up Paddle et Cours à Grenade",
-      intro: "Découvrez la Mer Méditerranée comme jamais avec nos locations premium de paddle board à Almuñécar. Conditions parfaites pour le SUP avec des eaux calmes, des vues époustouflantes sur la Sierra Nevada et du soleil toute l'année.",
+      subtitle: "Location de Stand Up Paddle à Grenade",
+      intro: "Découvrez la Mer Méditerranée comme jamais avec nos locations de paddle board à Almuñécar. Conditions parfaites pour le SUP avec des eaux calmes, des vues époustouflantes sur la Sierra Nevada et du soleil toute l'année.",
       whyTitle: "Pourquoi Choisir Nos Locations SUP",
-      activitiesTitle: "Activités SUP à Almuñécar",
       pricesTitle: "Prix de Stand Up Paddle",
       locationTitle: "Emplacement SUP à Almuñécar",
-      yogaLabel: "Cours SUP Yoga (90 min)",
       benefits: [
         { title: "Adapté aux Débutants", desc: "Planches stables et baie calme parfaites pour les novices" },
-        { title: "Sécurité d'Abord", desc: "Tout l'équipement inclus avec instructeurs certifiés disponibles" },
-        { title: "Équipement Premium", desc: "Dernières planches SUP des meilleures marques pour performance optimale" }
-      ],
-      activities: ["Sessions de SUP Yoga Matinales", "Tours de Paddle au Coucher du Soleil", "Cours de SUP Fitness", "Aventures Familiales en Paddle"]
+        { title: "Tout l'Équipement Inclus", desc: "Gilets de sauvetage et pagaies fournis avec chaque planche" },
+        { title: "Facile à Pagayer", desc: "Planches stables idéales pour les eaux calmes de notre baie" }
+      ]
     }
   };
   const content = paddleContent[language];
   const seoData = {
     en: {
       title: "Paddle Board Rental Almuñécar | SUP Costa Tropical Granada",
-      description: "Rent stand up paddle boards (SUP) in Almuñécar, Granada. Perfect conditions for beginners and experts. SUP yoga, sunset tours, equipment included.",
-      keywords: "paddle board rental Almuñécar, SUP hire Granada, stand up paddle Costa Tropical, SUP Almuñécar, paddle surf Granada, SUP yoga Mediterranean"
+      description: "Rent stand up paddle boards (SUP) in Almuñécar, Granada. Perfect conditions for beginners and experts. Life jackets and paddles included.",
+      keywords: "paddle board rental Almuñécar, SUP hire Granada, stand up paddle Costa Tropical, SUP Almuñécar, paddle surf Granada"
     },
     es: {
       title: "Alquiler Paddle Surf Almuñécar | SUP Costa Tropical Granada",
-      description: "Alquila tablas de paddle surf (SUP) en Almuñécar, Granada. Condiciones perfectas para principiantes y expertos. SUP yoga, tours al atardecer, equipo incluido.",
-      keywords: "alquiler paddle surf Almuñécar, alquiler SUP Granada, stand up paddle Costa Tropical, SUP Almuñécar, paddle board Granada, SUP yoga Mediterráneo"
+      description: "Alquila tablas de paddle surf (SUP) en Almuñécar, Granada. Condiciones perfectas para principiantes y expertos. Chalecos salvavidas y remos incluidos.",
+      keywords: "alquiler paddle surf Almuñécar, alquiler SUP Granada, stand up paddle Costa Tropical, SUP Almuñécar, paddle board Granada"
     },
     fr: {
       title: "Location Paddle Board Almuñécar | SUP Costa Tropical Grenade",
-      description: "Louez des planches de stand up paddle (SUP) à Almuñécar, Grenade. Conditions parfaites pour débutants et experts. SUP yoga, tours au coucher du soleil.",
-      keywords: "location paddle board Almuñécar, location SUP Grenade, stand up paddle Costa Tropical, SUP Almuñécar, paddle surf Grenade, SUP yoga Méditerranée"
+      description: "Louez des planches de stand up paddle (SUP) à Almuñécar, Grenade. Conditions parfaites pour débutants et experts. Gilets de sauvetage et pagaies inclus.",
+      keywords: "location paddle board Almuñécar, location SUP Grenade, stand up paddle Costa Tropical, SUP Almuñécar, paddle surf Grenade"
     }
   };
   const structuredData = {
@@ -2736,16 +2706,10 @@ const PaddleBoard = () => {
     areaServed: { "@type": "Place", name: "Costa Tropical, Granada" },
     offers: [
       { "@type": "Offer", name: "1 Hour SUP Rental", price: "12.00", priceCurrency: "EUR" },
-      { "@type": "Offer", name: "SUP Yoga Class", price: "30.00", priceCurrency: "EUR" }
+      { "@type": "Offer", name: "Full Day SUP Rental", price: "50.00", priceCurrency: "EUR" }
     ]
   };
-  const priceRows = [
-    [t("oneHour"), "15€"],
-    [t("twoHours"), "25€"],
-    [`${t("halfDay")} (4h)`, "35€"],
-    [`${t("day")} (8h)`, "50€"],
-    [content.yogaLabel, "30€"]
-  ];
+  const priceRows = PRODUCTS.paddleSurf.rows.map((r) => [t(r.labelKey), r.price]);
   return /* @__PURE__ */ jsxs("div", { style: { background: "#F6F3EC", color: "#11313E", overflowX: "hidden" }, children: [
     /* @__PURE__ */ jsx(
       SEO,
@@ -2761,7 +2725,7 @@ const PaddleBoard = () => {
       PageHero,
       {
         image: "/images/paddle.png",
-        imageAlt: "Paddle surf y SUP yoga sobre aguas tranquilas del Mediterráneo en Almuñécar, Costa Tropical",
+        imageAlt: "Paddle surf sobre aguas tranquilas del Mediterráneo en Almuñécar, Costa Tropical",
         eyebrow: content.eyebrow,
         title: content.title,
         subtitle: content.subtitle,
@@ -2775,13 +2739,6 @@ const PaddleBoard = () => {
         /* @__PURE__ */ jsx("h3", { className: "font-display", style: { fontWeight: 800, fontSize: 22, margin: "0 0 12px", letterSpacing: "-.01em" }, children: b.title }),
         /* @__PURE__ */ jsx("p", { style: { fontSize: 16, lineHeight: 1.6, color: "rgba(17,49,62,.74)", margin: 0 }, children: b.desc })
       ] }, b.title)) })
-    ] }) }),
-    /* @__PURE__ */ jsx("section", { style: { padding: "clamp(64px,9vw,120px) clamp(20px,6vw,96px)", background: "#F6F3EC" }, children: /* @__PURE__ */ jsxs("div", { style: { maxWidth: 880, margin: "0 auto" }, children: [
-      /* @__PURE__ */ jsx("h2", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(28px,4.5vw,54px)", lineHeight: 1, letterSpacing: "-.02em", margin: "0 0 clamp(32px,4vw,48px)", textAlign: "center" }, children: content.activitiesTitle }),
-      /* @__PURE__ */ jsx("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", gap: 14 }, children: content.activities.map((a) => /* @__PURE__ */ jsxs("div", { style: { display: "flex", alignItems: "center", gap: 14, background: "#fff", borderRadius: 14, padding: "20px 24px" }, children: [
-        /* @__PURE__ */ jsx("span", { style: { width: 9, height: 9, borderRadius: "50%", background: "#0E7C99", flex: "none" } }),
-        /* @__PURE__ */ jsx("span", { style: { fontSize: 17, fontWeight: 600 }, children: a })
-      ] }, a)) })
     ] }) }),
     /* @__PURE__ */ jsx("section", { id: "precios-paddle", style: { scrollMarginTop: 80, padding: "clamp(64px,9vw,130px) clamp(20px,6vw,96px)", background: "#11313E", color: "#fff" }, children: /* @__PURE__ */ jsxs("div", { style: { maxWidth: 760, margin: "0 auto" }, children: [
       /* @__PURE__ */ jsx("h2", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(28px,4.5vw,54px)", lineHeight: 1, letterSpacing: "-.02em", margin: "0 0 clamp(32px,4vw,48px)", textAlign: "center" }, children: content.pricesTitle }),
@@ -2808,130 +2765,6 @@ const PaddleBoard = () => {
     /* @__PURE__ */ jsx(Footer, {})
   ] });
 };
-const SeaActivities = () => {
-  const { t, language, routePaths: routePaths2 } = useLanguage();
-  const activitiesContent = {
-    en: {
-      eyebrow: "Sea Activities · Costa Tropical",
-      title: "Sea Activities Costa Tropical — Water Sports Almuñécar",
-      subtitle: "Your Gateway to Mediterranean Adventures in Granada",
-      intro: "Discover the best water sports and sea activities on the Costa Tropical. From kayaking to paddle boarding, snorkeling to coastal tours, experience the Mediterranean like a local in Almuñécar, Granada.",
-      activitiesTitle: "Our Water Sports & Activities",
-      whyTitle: "Why Choose OpenSea Costa Tropical",
-      ctaTitle: "Ready for Your Mediterranean Adventure?",
-      ctaText: "Visit us today and create unforgettable memories on the Costa Tropical.",
-      locationTitle: "Visit Us in Almuñécar",
-      activities: [
-        { title: "Kayak Tours", desc: "Explore hidden caves and pristine beaches accessible only by kayak", duration: "2-4 hours", price: "From 25€" },
-        { title: "Stand Up Paddle", desc: "Perfect for all ages, enjoy the calm waters of our protected bay", duration: "1-8 hours", price: "From 15€" },
-        { title: "Sunrise & Sunset Tours", desc: "Magical experiences paddling during golden hour", duration: "90 minutes", price: "35€" },
-        { title: "Photo Safari Tours", desc: "Capture the beauty of the Costa Tropical from the water", duration: "3 hours", price: "45€" }
-      ],
-      whyChoose: ["Professional certified instructors", "Premium equipment from top brands", "Small group sizes for personalized attention", "Local expertise since 2015", "Eco-friendly practices", "Insurance included"]
-    },
-    es: {
-      eyebrow: "Actividades Marítimas · Costa Tropical",
-      title: "Actividades Marítimas Costa Tropical — Deportes Acuáticos Almuñécar",
-      subtitle: "Tu Puerta a las Aventuras Mediterráneas en Granada",
-      intro: "Descubre los mejores deportes acuáticos y actividades marítimas en la Costa Tropical. Desde kayak hasta paddle board, snorkel hasta tours costeros, experimenta el Mediterráneo como un local en Almuñécar, Granada.",
-      activitiesTitle: "Nuestros Deportes y Actividades Acuáticas",
-      whyTitle: "Por Qué Elegir OpenSea Costa Tropical",
-      ctaTitle: "¿Listo para tu Aventura Mediterránea?",
-      ctaText: "Visítanos hoy y crea recuerdos inolvidables en la Costa Tropical.",
-      locationTitle: "Visítanos en Almuñécar",
-      activities: [
-        { title: "Tours en Kayak", desc: "Explora cuevas ocultas y playas vírgenes accesibles solo en kayak", duration: "2-4 horas", price: "Desde 25€" },
-        { title: "Stand Up Paddle", desc: "Perfecto para todas las edades, disfruta las aguas tranquilas de nuestra bahía protegida", duration: "1-8 horas", price: "Desde 15€" },
-        { title: "Tours Amanecer y Atardecer", desc: "Experiencias mágicas remando durante la hora dorada", duration: "90 minutos", price: "35€" },
-        { title: "Tours Safari Fotográfico", desc: "Captura la belleza de la Costa Tropical desde el agua", duration: "3 horas", price: "45€" }
-      ],
-      whyChoose: ["Instructores profesionales certificados", "Equipo premium de las mejores marcas", "Grupos pequeños para atención personalizada", "Experiencia local desde 2015", "Prácticas eco-amigables", "Seguro incluido"]
-    },
-    fr: {
-      eyebrow: "Activités Maritimes · Costa Tropical",
-      title: "Activités Maritimes Costa Tropical — Sports Nautiques Almuñécar",
-      subtitle: "Votre Porte vers les Aventures Méditerranéennes à Grenade",
-      intro: "Découvrez les meilleurs sports nautiques et activités maritimes sur la Costa Tropical. Du kayak au paddle board, du snorkeling aux tours côtiers, vivez la Méditerranée comme un local à Almuñécar, Grenade.",
-      activitiesTitle: "Nos Sports et Activités Nautiques",
-      whyTitle: "Pourquoi Choisir OpenSea Costa Tropical",
-      ctaTitle: "Prêt pour Votre Aventure Méditerranéenne ?",
-      ctaText: "Rendez-nous visite aujourd'hui et créez des souvenirs inoubliables sur la Costa Tropical.",
-      locationTitle: "Visitez-nous à Almuñécar",
-      activities: [
-        { title: "Tours en Kayak", desc: "Explorez grottes cachées et plages vierges accessibles uniquement en kayak", duration: "2-4 heures", price: "À partir de 25€" },
-        { title: "Stand Up Paddle", desc: "Parfait pour tous âges, profitez des eaux calmes de notre baie protégée", duration: "1-8 heures", price: "À partir de 15€" },
-        { title: "Tours Lever et Coucher de Soleil", desc: "Expériences magiques en pagayant pendant l'heure dorée", duration: "90 minutes", price: "35€" },
-        { title: "Tours Safari Photo", desc: "Capturez la beauté de la Costa Tropical depuis l'eau", duration: "3 heures", price: "45€" }
-      ],
-      whyChoose: ["Instructeurs professionnels certifiés", "Équipement premium des meilleures marques", "Petits groupes pour attention personnalisée", "Expertise locale depuis 2015", "Pratiques éco-responsables", "Assurance incluse"]
-    }
-  };
-  const content = activitiesContent[language];
-  const seoData = {
-    en: {
-      title: "Sea Activities Costa Tropical | Water Sports Almuñécar Granada",
-      description: "Experience the best water sports on the Costa Tropical. Kayaking, paddle boarding, sunrise tours and more in Almuñécar, Granada. Professional instructors, all equipment included.",
-      keywords: "water sports Almuñécar, sea activities Costa Tropical, water sports Granada, Mediterranean activities, kayak tours Almuñécar, SUP tours Granada"
-    },
-    es: {
-      title: "Actividades Marítimas Costa Tropical | Deportes Acuáticos Almuñécar",
-      description: "Experimenta los mejores deportes acuáticos en la Costa Tropical. Kayak, paddle surf, tours al amanecer y más en Almuñécar, Granada. Instructores profesionales, equipo incluido.",
-      keywords: "deportes acuáticos Almuñécar, actividades marítimas Costa Tropical, deportes acuáticos Granada, actividades Mediterráneo, tours kayak Almuñécar, tours SUP Granada"
-    },
-    fr: {
-      title: "Activités Maritimes Costa Tropical | Sports Nautiques Almuñécar",
-      description: "Découvrez les meilleurs sports nautiques sur la Costa Tropical. Kayak, paddle board, tours au lever du soleil et plus à Almuñécar, Grenade. Instructeurs professionnels, équipement inclus.",
-      keywords: "sports nautiques Almuñécar, activités maritimes Costa Tropical, sports nautiques Grenade, activités Méditerranée, tours kayak Almuñécar, tours SUP Grenade"
-    }
-  };
-  return /* @__PURE__ */ jsxs("div", { style: { background: "#F6F3EC", color: "#11313E", overflowX: "hidden" }, children: [
-    /* @__PURE__ */ jsx(SEO, { title: seoData[language].title, description: seoData[language].description, keywords: seoData[language].keywords }),
-    /* @__PURE__ */ jsx(Navbar, {}),
-    /* @__PURE__ */ jsx(PageHero, { eyebrow: content.eyebrow, title: content.title, subtitle: content.subtitle }),
-    /* @__PURE__ */ jsx("section", { style: { padding: "clamp(64px,9vw,120px) clamp(20px,6vw,96px)", background: "#F6F3EC" }, children: /* @__PURE__ */ jsx("p", { style: { maxWidth: "64ch", margin: "0 auto", textAlign: "center", fontSize: "clamp(19px,2.2vw,26px)", lineHeight: 1.55, color: "#11313E", fontWeight: 500 }, children: content.intro }) }),
-    /* @__PURE__ */ jsx("section", { style: { padding: "clamp(64px,9vw,130px) clamp(20px,6vw,96px)", background: "#E3EEF1" }, children: /* @__PURE__ */ jsxs("div", { style: { maxWidth: 1180, margin: "0 auto" }, children: [
-      /* @__PURE__ */ jsx("h2", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(28px,4.5vw,54px)", lineHeight: 1, letterSpacing: "-.02em", margin: "0 0 clamp(36px,5vw,60px)", textWrap: "balance" }, children: content.activitiesTitle }),
-      /* @__PURE__ */ jsx("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "clamp(16px,2vw,24px)" }, children: content.activities.map((a) => /* @__PURE__ */ jsxs("div", { style: { background: "#fff", borderRadius: 18, padding: "clamp(24px,2.6vw,36px)" }, children: [
-        /* @__PURE__ */ jsx("h3", { className: "font-display", style: { fontWeight: 800, fontSize: 23, margin: "0 0 10px", letterSpacing: "-.01em" }, children: a.title }),
-        /* @__PURE__ */ jsx("p", { style: { fontSize: 16, lineHeight: 1.6, color: "rgba(17,49,62,.74)", margin: "0 0 18px" }, children: a.desc }),
-        /* @__PURE__ */ jsxs("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "baseline", borderTop: "1px solid rgba(17,49,62,.12)", paddingTop: 14 }, children: [
-          /* @__PURE__ */ jsx("span", { style: { fontSize: 14, color: "rgba(17,49,62,.6)" }, children: a.duration }),
-          /* @__PURE__ */ jsx("span", { className: "font-display", style: { fontWeight: 800, color: "#0E7C99", fontSize: 18 }, children: a.price })
-        ] })
-      ] }, a.title)) })
-    ] }) }),
-    /* @__PURE__ */ jsx("section", { style: { padding: "clamp(64px,9vw,120px) clamp(20px,6vw,96px)", background: "#F6F3EC" }, children: /* @__PURE__ */ jsxs("div", { style: { maxWidth: 900, margin: "0 auto" }, children: [
-      /* @__PURE__ */ jsx("h2", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(28px,4.5vw,54px)", lineHeight: 1, letterSpacing: "-.02em", margin: "0 0 clamp(32px,4vw,48px)", textAlign: "center" }, children: content.whyTitle }),
-      /* @__PURE__ */ jsx("div", { style: { display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", gap: "16px 32px" }, children: content.whyChoose.map((reason) => /* @__PURE__ */ jsxs("div", { style: { display: "flex", alignItems: "flex-start", gap: 12 }, children: [
-        /* @__PURE__ */ jsx("span", { style: { width: 9, height: 9, borderRadius: "50%", background: "#E8623D", marginTop: 8, flex: "none" } }),
-        /* @__PURE__ */ jsx("p", { style: { fontSize: 17, color: "#11313E", margin: 0 }, children: reason })
-      ] }, reason)) })
-    ] }) }),
-    /* @__PURE__ */ jsx("section", { style: { padding: "clamp(64px,9vw,120px) clamp(20px,6vw,96px)", background: "linear-gradient(120deg, #0E7C99 0%, #0A5E74 100%)", color: "#fff", textAlign: "center" }, children: /* @__PURE__ */ jsxs("div", { style: { maxWidth: 760, margin: "0 auto" }, children: [
-      /* @__PURE__ */ jsx("h2", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(28px,4.5vw,52px)", lineHeight: 1.02, letterSpacing: "-.02em", margin: "0 0 18px", textWrap: "balance" }, children: content.ctaTitle }),
-      /* @__PURE__ */ jsx("p", { style: { fontSize: "clamp(17px,1.9vw,21px)", lineHeight: 1.55, opacity: 0.92, margin: "0 0 32px" }, children: content.ctaText }),
-      /* @__PURE__ */ jsxs("div", { style: { display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center" }, children: [
-        /* @__PURE__ */ jsx("a", { href: MAPS_DIRECTIONS_URL, target: "_blank", rel: "noopener noreferrer", style: { background: "#fff", color: "#0A5E74", padding: "15px 30px", borderRadius: 999, fontWeight: 700, fontSize: 16, textDecoration: "none" }, children: t("getDirections") }),
-        /* @__PURE__ */ jsx(Link, { to: routePaths2[language].kayak, style: { border: "1.5px solid rgba(255,255,255,.55)", color: "#fff", padding: "15px 30px", borderRadius: 999, fontWeight: 700, fontSize: 16, textDecoration: "none" }, children: t("kayakRentals") })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsx("section", { style: { padding: "clamp(64px,9vw,120px) clamp(20px,6vw,96px)", background: "#F6F3EC" }, children: /* @__PURE__ */ jsxs("div", { style: { maxWidth: 1280, margin: "0 auto", textAlign: "center" }, children: [
-      /* @__PURE__ */ jsx("h2", { className: "font-display", style: { fontWeight: 800, fontSize: "clamp(26px,4vw,46px)", letterSpacing: "-.02em", margin: "0 0 clamp(28px,4vw,44px)" }, children: content.locationTitle }),
-      /* @__PURE__ */ jsxs("div", { style: { display: "flex", flexDirection: "column", gap: 14, alignItems: "center", fontSize: 18, color: "#11313E" }, children: [
-        /* @__PURE__ */ jsx("p", { style: { margin: 0 }, children: /* @__PURE__ */ jsx("strong", { children: t("address") }) }),
-        /* @__PURE__ */ jsxs("p", { style: { margin: 0, color: "rgba(17,49,62,.74)" }, children: [
-          t("everyday"),
-          ": ",
-          BUSINESS.opens,
-          " – ",
-          BUSINESS.closes
-        ] }),
-        /* @__PURE__ */ jsx("p", { style: { margin: 0, color: "rgba(17,49,62,.74)" }, children: BUSINESS.telephoneDisplay })
-      ] })
-    ] }) }),
-    /* @__PURE__ */ jsx(Footer, {})
-  ] });
-};
 const queryClient = new QueryClient();
 const AppShell = () => /* @__PURE__ */ jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsx(TooltipProvider, { children: /* @__PURE__ */ jsxs(LanguageProvider, { children: [
   /* @__PURE__ */ jsx(Toaster$1, {}),
@@ -2940,18 +2773,14 @@ const AppShell = () => /* @__PURE__ */ jsx(QueryClientProvider, { client: queryC
     /* @__PURE__ */ jsx(Route, { path: "/", element: /* @__PURE__ */ jsx(Index, {}) }),
     /* @__PURE__ */ jsx(Route, { path: "/kayak-rental-almunecar", element: /* @__PURE__ */ jsx(KayakRental, {}) }),
     /* @__PURE__ */ jsx(Route, { path: "/paddle-board-almunecar", element: /* @__PURE__ */ jsx(PaddleBoard, {}) }),
-    /* @__PURE__ */ jsx(Route, { path: "/sea-activities-costa-tropical", element: /* @__PURE__ */ jsx(SeaActivities, {}) }),
     /* @__PURE__ */ jsx(Route, { path: "/es", element: /* @__PURE__ */ jsx(Index, {}) }),
     /* @__PURE__ */ jsx(Route, { path: "/es/alquiler-kayak-almunecar", element: /* @__PURE__ */ jsx(KayakRental, {}) }),
     /* @__PURE__ */ jsx(Route, { path: "/es/paddle-surf-almunecar", element: /* @__PURE__ */ jsx(PaddleBoard, {}) }),
-    /* @__PURE__ */ jsx(Route, { path: "/es/actividades-maritimas-costa-tropical", element: /* @__PURE__ */ jsx(SeaActivities, {}) }),
     /* @__PURE__ */ jsx(Route, { path: "/fr", element: /* @__PURE__ */ jsx(Index, {}) }),
     /* @__PURE__ */ jsx(Route, { path: "/fr/location-kayak-almunecar", element: /* @__PURE__ */ jsx(KayakRental, {}) }),
     /* @__PURE__ */ jsx(Route, { path: "/fr/paddle-board-almunecar", element: /* @__PURE__ */ jsx(PaddleBoard, {}) }),
-    /* @__PURE__ */ jsx(Route, { path: "/fr/activites-maritimes-costa-tropical", element: /* @__PURE__ */ jsx(SeaActivities, {}) }),
     /* @__PURE__ */ jsx(Route, { path: "/kayak", element: /* @__PURE__ */ jsx(Navigate, { to: "/kayak-rental-almunecar", replace: true }) }),
     /* @__PURE__ */ jsx(Route, { path: "/paddle", element: /* @__PURE__ */ jsx(Navigate, { to: "/paddle-board-almunecar", replace: true }) }),
-    /* @__PURE__ */ jsx(Route, { path: "/activities", element: /* @__PURE__ */ jsx(Navigate, { to: "/sea-activities-costa-tropical", replace: true }) }),
     /* @__PURE__ */ jsx(Route, { path: "*", element: /* @__PURE__ */ jsx(NotFound, {}) })
   ] })
 ] }) }) });
