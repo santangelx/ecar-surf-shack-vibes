@@ -53,7 +53,7 @@ const translations: Translations = {
     // Prices
     ourPrices: "Our Prices",
     affordable: "Affordable adventures for everyone",
-    includeLife: "Prices include life jacket and basic instruction.",
+    includeLife: "Prices include life jacket and paddle.",
     allEquipment: "All equipment included.",
     type: "Type",
     oneHour: "1 Hour",
@@ -137,7 +137,7 @@ const translations: Translations = {
     // Prices
     ourPrices: "Nuestros Precios",
     affordable: "Aventuras asequibles para todos",
-    includeLife: "Los precios incluyen chaleco salvavidas e instrucción básica.",
+    includeLife: "Los precios incluyen chaleco salvavidas y remo.",
     allEquipment: "Todo el equipo incluido.",
     type: "Tipo",
     oneHour: "1 Hora",
@@ -221,7 +221,7 @@ const translations: Translations = {
     // Prices
     ourPrices: "Nos Prix",
     affordable: "Des aventures abordables pour tous",
-    includeLife: "Les prix incluent un gilet de sauvetage et une instruction de base.",
+    includeLife: "Les prix incluent un gilet de sauvetage et une pagaie.",
     allEquipment: "Tout l'équipement inclus.",
     type: "Type",
     oneHour: "1 Heure",
@@ -304,8 +304,6 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
       routeType = 'kayak';
     } else if (currentPath.includes('paddle')) {
       routeType = 'paddle';
-    } else if (currentPath.includes('activities') || currentPath.includes('actividades') || currentPath.includes('activites')) {
-      routeType = 'activities';
     }
     
     // Navigate to the same page in the new language

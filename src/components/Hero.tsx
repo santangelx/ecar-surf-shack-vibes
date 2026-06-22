@@ -26,7 +26,7 @@ const Hero = () => {
         />
         <img
           src="/images/paddle-1200w.jpg"
-          alt="Paddle surf y SUP yoga en el mar Mediterráneo de Almuñécar, Costa Tropical"
+          alt="Paddle surf en el mar Mediterráneo de Almuñécar, Costa Tropical"
           {...{ fetchpriority: 'high' }}
           decoding="async"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}

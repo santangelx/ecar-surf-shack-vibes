@@ -31,7 +31,6 @@ const Navbar = () => {
     { to: paths.home, label: t('home') },
     { to: paths.kayak, label: t('kayakRentals') },
     { to: paths.paddle, label: t('paddleBoardNav') },
-    { to: paths.activities, label: t('seaActivities') },
   ];
 
   const linkStyle = (to: string): React.CSSProperties => ({

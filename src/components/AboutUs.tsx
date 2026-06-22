@@ -11,52 +11,34 @@ const AboutUs = () => {
       title: 'About OpenSea — Your Local Water Sports Experts',
       subtitle: 'Operating on Playa de San Cristóbal since 2015',
       description:
-        "Founded by passionate water sports enthusiasts, OpenSea has been introducing visitors and locals to the beauty of the Costa Tropical's coastline. Our team of experienced kayak and paddle surf instructors ensures safe, memorable experiences on the Mediterranean.",
+        "Founded by passionate water sports enthusiasts, OpenSea has been introducing visitors and locals to the beauty of the Costa Tropical's coastline. We rent quality kayaks and paddle boards right on the beach so everyone can enjoy the Mediterranean safely.",
       certifications:
-        'Our experienced team specializes in kayak rentals and paddle surf instruction, providing expert guidance for all skill levels. We prioritize safety and fun on every water sports adventure.',
+        'We specialize in kayak and paddle surf rentals for all ages and skill levels, with stable equipment and life jackets included. We prioritize safety and fun on the water.',
       commitment:
         'We are committed to sustainable tourism and protecting our beautiful marine environment. All our kayak and paddle surf activities follow eco-friendly practices to preserve the Costa Tropical for future generations.',
-      stats: [
-        { label: 'Years of Experience', value: '5+' },
-        { label: 'Happy Customers', value: '1,000+' },
-        { label: '5-Star Reviews', value: '50+' },
-        { label: 'Safety Record', value: '100%' },
-      ],
-      caption: 'Our experienced team ready to guide you on your Mediterranean adventure',
+      caption: 'Quality kayaks and paddle boards on Playa de San Cristóbal, ready for your Mediterranean day out',
     },
     es: {
       title: 'Sobre OpenSea — Tus Expertos Locales en Deportes Acuáticos',
       subtitle: 'Operando en Playa de San Cristóbal desde 2015',
       description:
-        'Fundada por apasionados de los deportes acuáticos, OpenSea lleva años introduciendo a visitantes y locales a la belleza de la costa de la Costa Tropical. Nuestro equipo de instructores experimentados en kayak y paddle surf garantiza experiencias seguras y memorables en el Mediterráneo.',
+        'Fundada por apasionados de los deportes acuáticos, OpenSea lleva años acercando a visitantes y locales a la belleza de la costa de la Costa Tropical. Alquilamos kayaks y tablas de paddle de calidad en la misma playa para que todos disfruten del Mediterráneo con seguridad.',
       certifications:
-        'Nuestro equipo experimentado se especializa en alquiler de kayaks e instrucción de paddle surf, proporcionando orientación experta para todos los niveles. Priorizamos la seguridad y la diversión en cada aventura acuática.',
+        'Nos especializamos en el alquiler de kayaks y paddle surf para todas las edades y niveles, con equipo estable y chaleco salvavidas incluido. Priorizamos la seguridad y la diversión en el agua.',
       commitment:
         'Estamos comprometidos con el turismo sostenible y la protección de nuestro hermoso entorno marino. Todas nuestras actividades de kayak y paddle surf siguen prácticas eco-amigables para preservar la Costa Tropical para las futuras generaciones.',
-      stats: [
-        { label: 'Años de Experiencia', value: '5+' },
-        { label: 'Clientes Satisfechos', value: '1.000+' },
-        { label: 'Reseñas 5 Estrellas', value: '50+' },
-        { label: 'Record de Seguridad', value: '100%' },
-      ],
-      caption: 'Nuestro equipo experimentado listo para guiarte en tu aventura mediterránea',
+      caption: 'Kayaks y tablas de paddle de calidad en la Playa de San Cristóbal, listos para tu día en el Mediterráneo',
     },
     fr: {
       title: "À Propos d'OpenSea — Vos Experts Locaux en Sports Nautiques",
       subtitle: 'Présents sur la Playa de San Cristóbal depuis 2015',
       description:
-        "Fondée par des passionnés de sports nautiques, OpenSea initie depuis des années les visiteurs et les locaux à la beauté du littoral de la Costa Tropical. Notre équipe d'instructeurs expérimentés en kayak et paddle surf garantit des expériences sûres et mémorables sur la Méditerranée.",
+        "Fondée par des passionnés de sports nautiques, OpenSea initie depuis des années les visiteurs et les locaux à la beauté du littoral de la Costa Tropical. Nous louons des kayaks et des planches de paddle de qualité directement sur la plage pour que chacun profite de la Méditerranée en toute sécurité.",
       certifications:
-        "Notre équipe expérimentée se spécialise dans la location de kayaks et l'instruction de paddle surf, offrant des conseils experts pour tous les niveaux. Nous priorisons la sécurité et le plaisir à chaque aventure nautique.",
+        "Nous sommes spécialisés dans la location de kayaks et de paddle surf pour tous les âges et niveaux, avec un matériel stable et un gilet de sauvetage inclus. Nous priorisons la sécurité et le plaisir sur l'eau.",
       commitment:
         'Nous sommes engagés dans un tourisme durable et la protection de notre magnifique environnement marin. Toutes nos activités de kayak et paddle surf suivent des pratiques éco-responsables pour préserver la Costa Tropical pour les générations futures.',
-      stats: [
-        { label: "Années d'Expérience", value: '5+' },
-        { label: 'Clients Satisfaits', value: '1 000+' },
-        { label: 'Avis 5 Étoiles', value: '50+' },
-        { label: 'Record de Sécurité', value: '100%' },
-      ],
-      caption: 'Notre équipe expérimentée prête à vous guider dans votre aventure méditerranéenne',
+      caption: 'Kayaks et planches de paddle de qualité sur la Playa de San Cristóbal, prêts pour votre journée en Méditerranée',
     },
   };
 
@@ -76,20 +58,12 @@ const AboutUs = () => {
             <p style={{ fontSize: 16, lineHeight: 1.7, margin: '0 0 22px', color: 'rgba(17,49,62,.74)' }}>{data.certifications}</p>
             <p style={{ fontSize: 16, lineHeight: 1.7, margin: 0, color: 'rgba(17,49,62,.74)', fontStyle: 'italic' }}>{data.commitment}</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(14px,2vw,20px)' }}>
-            {data.stats.map((s) => (
-              <div key={s.label} style={{ background: '#fff', borderRadius: 18, padding: 'clamp(22px,2.6vw,32px)', textAlign: 'center' }}>
-                <div className="font-display" style={{ fontWeight: 900, fontSize: 'clamp(34px,4vw,48px)', color: '#0E7C99', letterSpacing: '-.02em' }}>{s.value}</div>
-                <div style={{ fontSize: 14, color: 'rgba(17,49,62,.7)', marginTop: 6 }}>{s.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
         <figure style={{ margin: 'clamp(40px,6vw,72px) 0 0' }}>
           <div style={{ borderRadius: 24, overflow: 'hidden', aspectRatio: '16 / 8', boxShadow: '0 30px 70px -38px rgba(17,49,62,.45)' }}>
             <OptimizedImage
               src="/images/kayak.png"
-              alt="Equipo de OpenSea ofreciendo instrucción de kayak en la Playa de San Cristóbal, Almuñécar"
+              alt="Kayaks de alquiler de OpenSea en la Playa de San Cristóbal, Almuñécar"
               sizes="(max-width: 1280px) 100vw, 1280px"
             />
           </div>

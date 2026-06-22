@@ -31,7 +31,7 @@ const SEO: React.FC<SEOProps> = ({
 
   // Correct hreflang by construction: find which page-type the current path is,
   // then emit the registered URL for each language (handles differing slugs).
-  const types = ['home', 'kayak', 'paddle', 'activities'] as const;
+  const types = ['home', 'kayak', 'paddle'] as const;
   const langs: Language[] = ['en', 'es', 'fr'];
   let routeType: (typeof types)[number] = 'home';
   for (const t of types) {

@@ -1,52 +1,16 @@
 import React from 'react';
 import { useLanguage } from '@/contexts/LanguageContext';
 import SectionEyebrow from './SectionEyebrow';
+import { HOME_PRODUCTS } from '@/lib/prices';
 
 const Prices = () => {
   const { t } = useLanguage();
 
-  const products = [
-    {
-      name: t('twoPersonKayak'),
-      note: t('includeLife'),
-      rows: [
-        [t('oneHour'), '€15'],
-        [t('twoHours'), '€25'],
-        [t('halfDay'), '€35'],
-        [t('day'), '€60'],
-      ],
-    },
-    {
-      name: t('onePersonKayak'),
-      note: t('includeLife'),
-      rows: [
-        [t('oneHour'), '€10'],
-        [t('twoHours'), '€18'],
-        [t('halfDay'), '€30'],
-        [t('day'), '€50'],
-      ],
-    },
-    {
-      name: t('paddleSurf'),
-      note: t('allEquipment'),
-      rows: [
-        [t('oneHour'), '€12'],
-        [t('twoHours'), '€20'],
-        [t('halfDay'), '€30'],
-        [t('day'), '€50'],
-      ],
-    },
-    {
-      name: t('waterBike'),
-      note: t('allEquipment'),
-      rows: [
-        [t('thirtyMinutes'), '€15'],
-        [t('oneHour'), '€20'],
-        [t('halfDay'), '€50'],
-        [t('day'), '€90'],
-      ],
-    },
-  ];
+  const products = HOME_PRODUCTS.map((p) => ({
+    name: t(p.nameKey),
+    note: t(p.noteKey),
+    rows: p.rows.map((r) => [t(r.labelKey), r.price] as const),
+  }));
 
   return (
     <section id="precios" style={{ scrollMarginTop: 80, padding: 'clamp(72px,11vw,150px) clamp(20px,6vw,96px)', background: '#11313E', color: '#fff' }}>

@@ -10,15 +10,15 @@ const FAQ: Record<Language, { q: string; a: string }[]> = {
   es: [
     {
       q: '¿Qué actividades acuáticas hay disponibles en Almuñécar?',
-      a: 'Ofrecemos alquiler de kayaks, alquiler de tablas de paddle surf (SUP), bicicletas de agua, tours guiados en kayak, clases de SUP yoga y tours de paddle al amanecer y atardecer por la Costa Tropical.',
+      a: 'Alquilamos kayaks individuales y dobles, tablas de paddle surf (SUP) y bicicletas de agua en la Playa de San Cristóbal, Almuñécar.',
     },
     {
       q: '¿Necesito experiencia para los deportes acuáticos en Almuñécar?',
-      a: '¡No se necesita experiencia! Nuestro equipo estable y las aguas tranquilas de la bahía son perfectos para principiantes. Proporcionamos instrucción básica y todo el equipo de seguridad.',
+      a: '¡No se necesita experiencia! Nuestro equipo estable y las aguas tranquilas de la bahía son perfectos para principiantes. Te explicamos lo básico antes de salir y proporcionamos todo el equipo de seguridad.',
     },
     {
       q: '¿Qué incluye el precio del alquiler?',
-      a: 'Todos los alquileres incluyen el equipo (kayak o tabla de SUP), remo, chaleco salvavidas e instrucción básica. En los tours también proporcionamos bolsas impermeables y guías experimentados.',
+      a: 'Todos los alquileres incluyen el equipo (kayak o tabla de SUP), el remo y el chaleco salvavidas.',
     },
     {
       q: '¿Cuáles son las mejores condiciones para los deportes acuáticos en la Costa Tropical?',
@@ -32,15 +32,15 @@ const FAQ: Record<Language, { q: string; a: string }[]> = {
   en: [
     {
       q: 'What water activities are available in Almuñécar?',
-      a: 'We offer kayak rental, stand-up paddle board (SUP) rental, water bikes, guided kayak tours, SUP yoga classes, and sunrise and sunset paddle tours along the Costa Tropical.',
+      a: 'We rent single and double kayaks, stand-up paddle boards (SUP), and water bikes on Playa de San Cristóbal, Almuñécar.',
     },
     {
       q: 'Do I need experience for water sports in Almuñécar?',
-      a: 'No experience needed! Our stable equipment and the calm bay waters are perfect for beginners. We provide basic instruction and all safety equipment.',
+      a: 'No experience needed! Our stable equipment and the calm bay waters are perfect for beginners. We show you the basics before you set off and provide all safety equipment.',
     },
     {
       q: 'What does the rental price include?',
-      a: 'Every rental includes the equipment (kayak or SUP board), paddle, life jacket, and basic instruction. Tours also include dry bags for your belongings and experienced guides.',
+      a: 'Every rental includes the equipment (kayak or SUP board), paddle, and life jacket.',
     },
     {
       q: 'What are the best conditions for water sports on the Costa Tropical?',
@@ -54,15 +54,15 @@ const FAQ: Record<Language, { q: string; a: string }[]> = {
   fr: [
     {
       q: 'Quelles activités nautiques sont disponibles à Almuñécar ?',
-      a: 'Nous proposons la location de kayaks, la location de planches de paddle surf (SUP), des vélos aquatiques, des excursions guidées en kayak, des cours de SUP yoga et des sorties paddle au lever et au coucher du soleil sur la Costa Tropical.',
+      a: 'Nous louons des kayaks simples et doubles, des planches de paddle surf (SUP) et des vélos aquatiques sur la Playa de San Cristóbal, Almuñécar.',
     },
     {
       q: "Ai-je besoin d'expérience pour les sports nautiques à Almuñécar ?",
-      a: "Aucune expérience requise ! Notre matériel stable et les eaux calmes de la baie sont parfaits pour les débutants. Nous fournissons une initiation et tout l'équipement de sécurité.",
+      a: "Aucune expérience requise ! Notre matériel stable et les eaux calmes de la baie sont parfaits pour les débutants. Nous vous expliquons les bases avant le départ et fournissons tout l'équipement de sécurité.",
     },
     {
       q: 'Que comprend le prix de la location ?',
-      a: "Chaque location comprend le matériel (kayak ou planche SUP), la pagaie, le gilet de sauvetage et une initiation. Les excursions incluent aussi des sacs étanches et des guides expérimentés.",
+      a: "Chaque location comprend le matériel (kayak ou planche SUP), la pagaie et le gilet de sauvetage.",
     },
     {
       q: 'Quelles sont les meilleures conditions pour les sports nautiques sur la Costa Tropical ?',

@@ -5,6 +5,7 @@ import PageHero from '@/components/PageHero';
 import SEO from '@/components/SEO';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { BUSINESS } from '@/lib/site';
+import { PRODUCTS } from '@/lib/prices';
 
 const PaddleBoard = () => {
   const { t, language } = useLanguage();
@@ -13,56 +14,47 @@ const PaddleBoard = () => {
     en: {
       eyebrow: 'Paddle Surf · SUP · Almuñécar',
       title: 'Paddle Board Almuñécar — SUP Rentals Costa Tropical',
-      subtitle: 'Stand Up Paddle Board Rentals & Lessons in Granada',
+      subtitle: 'Stand Up Paddle Board Rentals in Granada',
       intro:
-        'Experience the Mediterranean Sea like never before with our premium paddle board rentals in Almuñécar. Perfect conditions for SUP with calm waters, stunning views of the Sierra Nevada, and year-round sunshine.',
+        'Experience the Mediterranean Sea like never before with our paddle board rentals in Almuñécar. Perfect conditions for SUP with calm waters, stunning views of the Sierra Nevada, and year-round sunshine.',
       whyTitle: 'Why Choose Our SUP Rentals',
-      activitiesTitle: 'SUP Activities in Almuñécar',
       pricesTitle: 'Paddle Surf Prices',
       locationTitle: 'SUP Location in Almuñécar',
-      yogaLabel: 'SUP Yoga Class (90 min)',
       benefits: [
         { title: 'Beginner Friendly', desc: 'Stable boards and calm bay perfect for first-timers' },
-        { title: 'Safety First', desc: 'All equipment included with certified instructors available' },
-        { title: 'Premium Equipment', desc: 'Latest SUP boards from top brands for optimal performance' },
+        { title: 'All Equipment Included', desc: 'Life jackets and paddles provided with every board' },
+        { title: 'Easy to Paddle', desc: 'Stable boards suited to the calm waters of our bay' },
       ],
-      activities: ['Morning SUP Yoga Sessions', 'Sunset Paddle Tours', 'SUP Fitness Classes', 'Family Paddle Adventures'],
     },
     es: {
       eyebrow: 'Paddle Surf · SUP · Almuñécar',
       title: 'Paddle Board Almuñécar — Alquiler SUP Costa Tropical',
-      subtitle: 'Alquiler de Tablas de Paddle Surf y Clases en Granada',
+      subtitle: 'Alquiler de Tablas de Paddle Surf en Granada',
       intro:
-        'Experimenta el Mar Mediterráneo como nunca antes con nuestro alquiler premium de paddle board en Almuñécar. Condiciones perfectas para SUP con aguas tranquilas, vistas impresionantes de Sierra Nevada y sol todo el año.',
+        'Experimenta el Mar Mediterráneo como nunca antes con nuestro alquiler de paddle board en Almuñécar. Condiciones perfectas para SUP con aguas tranquilas, vistas impresionantes de Sierra Nevada y sol todo el año.',
       whyTitle: 'Por Qué Elegir Nuestro Alquiler SUP',
-      activitiesTitle: 'Actividades SUP en Almuñécar',
       pricesTitle: 'Precios de Paddle Surf',
       locationTitle: 'Ubicación SUP en Almuñécar',
-      yogaLabel: 'Clase SUP Yoga (90 min)',
       benefits: [
         { title: 'Ideal para Principiantes', desc: 'Tablas estables y bahía tranquila perfecta para novatos' },
-        { title: 'Seguridad Primero', desc: 'Todo el equipo incluido con instructores certificados disponibles' },
-        { title: 'Equipo Premium', desc: 'Últimas tablas SUP de marcas top para rendimiento óptimo' },
+        { title: 'Todo el Equipo Incluido', desc: 'Chalecos salvavidas y remos incluidos con cada tabla' },
+        { title: 'Fácil de Remar', desc: 'Tablas estables ideales para las aguas tranquilas de nuestra bahía' },
       ],
-      activities: ['Sesiones de SUP Yoga Matutinas', 'Tours de Paddle al Atardecer', 'Clases de SUP Fitness', 'Aventuras Familiares en Paddle'],
     },
     fr: {
       eyebrow: 'Paddle Surf · SUP · Almuñécar',
       title: 'Paddle Board Almuñécar — Location SUP Costa Tropical',
-      subtitle: 'Location de Stand Up Paddle et Cours à Grenade',
+      subtitle: 'Location de Stand Up Paddle à Grenade',
       intro:
-        'Découvrez la Mer Méditerranée comme jamais avec nos locations premium de paddle board à Almuñécar. Conditions parfaites pour le SUP avec des eaux calmes, des vues époustouflantes sur la Sierra Nevada et du soleil toute l\'année.',
+        'Découvrez la Mer Méditerranée comme jamais avec nos locations de paddle board à Almuñécar. Conditions parfaites pour le SUP avec des eaux calmes, des vues époustouflantes sur la Sierra Nevada et du soleil toute l\'année.',
       whyTitle: 'Pourquoi Choisir Nos Locations SUP',
-      activitiesTitle: 'Activités SUP à Almuñécar',
       pricesTitle: 'Prix de Stand Up Paddle',
       locationTitle: 'Emplacement SUP à Almuñécar',
-      yogaLabel: 'Cours SUP Yoga (90 min)',
       benefits: [
         { title: 'Adapté aux Débutants', desc: 'Planches stables et baie calme parfaites pour les novices' },
-        { title: "Sécurité d'Abord", desc: 'Tout l\'équipement inclus avec instructeurs certifiés disponibles' },
-        { title: 'Équipement Premium', desc: 'Dernières planches SUP des meilleures marques pour performance optimale' },
+        { title: "Tout l'Équipement Inclus", desc: 'Gilets de sauvetage et pagaies fournis avec chaque planche' },
+        { title: 'Facile à Pagayer', desc: 'Planches stables idéales pour les eaux calmes de notre baie' },
       ],
-      activities: ['Sessions de SUP Yoga Matinales', 'Tours de Paddle au Coucher du Soleil', 'Cours de SUP Fitness', 'Aventures Familiales en Paddle'],
     },
   };
 
@@ -72,20 +64,20 @@ const PaddleBoard = () => {
     en: {
       title: 'Paddle Board Rental Almuñécar | SUP Costa Tropical Granada',
       description:
-        'Rent stand up paddle boards (SUP) in Almuñécar, Granada. Perfect conditions for beginners and experts. SUP yoga, sunset tours, equipment included.',
-      keywords: 'paddle board rental Almuñécar, SUP hire Granada, stand up paddle Costa Tropical, SUP Almuñécar, paddle surf Granada, SUP yoga Mediterranean',
+        'Rent stand up paddle boards (SUP) in Almuñécar, Granada. Perfect conditions for beginners and experts. Life jackets and paddles included.',
+      keywords: 'paddle board rental Almuñécar, SUP hire Granada, stand up paddle Costa Tropical, SUP Almuñécar, paddle surf Granada',
     },
     es: {
       title: 'Alquiler Paddle Surf Almuñécar | SUP Costa Tropical Granada',
       description:
-        'Alquila tablas de paddle surf (SUP) en Almuñécar, Granada. Condiciones perfectas para principiantes y expertos. SUP yoga, tours al atardecer, equipo incluido.',
-      keywords: 'alquiler paddle surf Almuñécar, alquiler SUP Granada, stand up paddle Costa Tropical, SUP Almuñécar, paddle board Granada, SUP yoga Mediterráneo',
+        'Alquila tablas de paddle surf (SUP) en Almuñécar, Granada. Condiciones perfectas para principiantes y expertos. Chalecos salvavidas y remos incluidos.',
+      keywords: 'alquiler paddle surf Almuñécar, alquiler SUP Granada, stand up paddle Costa Tropical, SUP Almuñécar, paddle board Granada',
     },
     fr: {
       title: 'Location Paddle Board Almuñécar | SUP Costa Tropical Grenade',
       description:
-        'Louez des planches de stand up paddle (SUP) à Almuñécar, Grenade. Conditions parfaites pour débutants et experts. SUP yoga, tours au coucher du soleil.',
-      keywords: 'location paddle board Almuñécar, location SUP Grenade, stand up paddle Costa Tropical, SUP Almuñécar, paddle surf Grenade, SUP yoga Méditerranée',
+        'Louez des planches de stand up paddle (SUP) à Almuñécar, Grenade. Conditions parfaites pour débutants et experts. Gilets de sauvetage et pagaies inclus.',
+      keywords: 'location paddle board Almuñécar, location SUP Grenade, stand up paddle Costa Tropical, SUP Almuñécar, paddle surf Grenade',
     },
   };
 
@@ -108,17 +100,12 @@ const PaddleBoard = () => {
     areaServed: { '@type': 'Place', name: 'Costa Tropical, Granada' },
     offers: [
       { '@type': 'Offer', name: '1 Hour SUP Rental', price: '12.00', priceCurrency: 'EUR' },
-      { '@type': 'Offer', name: 'SUP Yoga Class', price: '30.00', priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: 'Full Day SUP Rental', price: '50.00', priceCurrency: 'EUR' },
     ],
   };
 
-  const priceRows: [string, string][] = [
-    [t('oneHour'), '15€'],
-    [t('twoHours'), '25€'],
-    [`${t('halfDay')} (4h)`, '35€'],
-    [`${t('day')} (8h)`, '50€'],
-    [content.yogaLabel, '30€'],
-  ];
+  // Paddle-surf prices straight from the canonical source (matches home).
+  const priceRows: [string, string][] = PRODUCTS.paddleSurf.rows.map((r) => [t(r.labelKey), r.price]);
 
   return (
     <div style={{ background: '#F6F3EC', color: '#11313E', overflowX: 'hidden' }}>
@@ -132,7 +119,7 @@ const PaddleBoard = () => {
 
       <PageHero
         image="/images/paddle.png"
-        imageAlt="Paddle surf y SUP yoga sobre aguas tranquilas del Mediterráneo en Almuñécar, Costa Tropical"
+        imageAlt="Paddle surf sobre aguas tranquilas del Mediterráneo en Almuñécar, Costa Tropical"
         eyebrow={content.eyebrow}
         title={content.title}
         subtitle={content.subtitle}
@@ -155,22 +142,6 @@ const PaddleBoard = () => {
               <div key={b.title} style={{ background: '#fff', borderRadius: 18, padding: 'clamp(26px,3vw,40px)', textAlign: 'center' }}>
                 <h3 className="font-display" style={{ fontWeight: 800, fontSize: 22, margin: '0 0 12px', letterSpacing: '-.01em' }}>{b.title}</h3>
                 <p style={{ fontSize: 16, lineHeight: 1.6, color: 'rgba(17,49,62,.74)', margin: 0 }}>{b.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section style={{ padding: 'clamp(64px,9vw,120px) clamp(20px,6vw,96px)', background: '#F6F3EC' }}>
-        <div style={{ maxWidth: 880, margin: '0 auto' }}>
-          <h2 className="font-display" style={{ fontWeight: 800, fontSize: 'clamp(28px,4.5vw,54px)', lineHeight: 1, letterSpacing: '-.02em', margin: '0 0 clamp(32px,4vw,48px)', textAlign: 'center' }}>
-            {content.activitiesTitle}
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 14 }}>
-            {content.activities.map((a) => (
-              <div key={a} style={{ display: 'flex', alignItems: 'center', gap: 14, background: '#fff', borderRadius: 14, padding: '20px 24px' }}>
-                <span style={{ width: 9, height: 9, borderRadius: '50%', background: '#0E7C99', flex: 'none' }} />
-                <span style={{ fontSize: 17, fontWeight: 600 }}>{a}</span>
               </div>
             ))}
           </div>

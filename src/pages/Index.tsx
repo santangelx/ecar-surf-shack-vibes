@@ -19,18 +19,18 @@ const Index = () => {
   const seoData = {
     en: {
       title: "OpenSea Kayak & Paddle Surf Almuñécar | Water Sports Costa Tropical",
-      description: "Rent kayaks and paddle boards in Almuñécar, Granada. Experience the Mediterranean with professional equipment, guided tours, and SUP yoga. Open daily 10-19h.",
-      keywords: "kayak rental Almuñécar, paddle surf Granada, water sports Costa Tropical, SUP rental Spain, kayak tours Mediterranean, beach activities Almuñécar"
+      description: "Rent kayaks, paddle boards (SUP), and water bikes in Almuñécar, Granada. Calm-bay conditions for all ages on the Costa Tropical. Open daily 11:00–20:00.",
+      keywords: "kayak rental Almuñécar, paddle surf Almuñécar, water sports Costa Tropical, SUP rental Granada, kayak Almuñécar, beach activities Almuñécar"
     },
     es: {
       title: "OpenSea Kayak y Paddle Surf Almuñécar | Deportes Acuáticos Costa Tropical",
-      description: "Alquila kayaks y tablas de paddle en Almuñécar, Granada. Experimenta el Mediterráneo con equipo profesional, tours guiados y SUP yoga. Abierto diario 10-19h.",
-      keywords: "alquiler kayak Almuñécar, paddle surf Granada, deportes acuáticos Costa Tropical, alquiler SUP España, tours kayak Mediterráneo, actividades playa Almuñécar"
+      description: "Alquila kayaks, tablas de paddle surf (SUP) y bicicletas de agua en Almuñécar, Granada. Aguas tranquilas para todas las edades en la Costa Tropical. Abierto todos los días 11:00–20:00.",
+      keywords: "alquiler kayak Almuñécar, paddle surf Almuñécar, deportes acuáticos Costa Tropical, alquiler SUP Granada, kayak Almuñécar, actividades playa Almuñécar"
     },
     fr: {
       title: "OpenSea Kayak et Paddle Surf Almuñécar | Sports Nautiques Costa Tropical",
-      description: "Louez kayaks et planches de paddle à Almuñécar, Grenade. Découvrez la Méditerranée avec équipement professionnel, visites guidées et SUP yoga. Ouvert tous les jours 10-19h.",
-      keywords: "location kayak Almuñécar, paddle surf Grenade, sports nautiques Costa Tropical, location SUP Espagne, tours kayak Méditerranée, activités plage Almuñécar"
+      description: "Louez kayaks, planches de paddle (SUP) et vélos aquatiques à Almuñécar, Grenade. Eaux calmes pour tous les âges sur la Costa Tropical. Ouvert tous les jours 11h–20h.",
+      keywords: "location kayak Almuñécar, paddle surf Almuñécar, sports nautiques Costa Tropical, location SUP Grenade, kayak Almuñécar, activités plage Almuñécar"
     }
   };
   

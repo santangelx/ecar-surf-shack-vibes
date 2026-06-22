@@ -33,7 +33,6 @@ const Footer = () => {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <li><Link to={paths.kayak} style={linkStyle}>{t('kayakRentals')}</Link></li>
               <li><Link to={paths.paddle} style={linkStyle}>{t('paddleBoardNav')}</Link></li>
-              <li><Link to={paths.activities} style={linkStyle}>{t('seaActivities')}</Link></li>
               <li>
                 <a href={MAPS_DIRECTIONS_URL} target="_blank" rel="noopener noreferrer" style={linkStyle}>{t('location')}</a>
               </li>
