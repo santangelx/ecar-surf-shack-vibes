@@ -1,8 +1,18 @@
-import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import React, { createContext, useContext, ReactNode } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { routePaths } from '@/lib/routes';
 
 // Define available languages
 export type Language = 'en' | 'es' | 'fr';
+
+// Derive the active language from the URL prefix. Pure + synchronous so it works
+// identically during SSG prerender (renderToString) and client hydration — no
+// useEffect, no flash, no hydration mismatch.
+export const deriveLanguage = (pathname: string): Language => {
+  if (pathname === '/es' || pathname.startsWith('/es/')) return 'es';
+  if (pathname === '/fr' || pathname.startsWith('/fr/')) return 'fr';
+  return 'en';
+};
 
 // Define translations structure
 type Translations = {
@@ -15,8 +25,11 @@ type Translations = {
 const translations: Translations = {
   en: {
     // Hero section
-    tagline: "Kayak & Paddle Surf in Almuñecar, Granada",
+    heroEyebrow: "Open Sea · Playa de San Cristóbal",
+    tagline: "Kayak & Paddle Surf in Almuñécar, Granada",
     description: "Experience the beautiful Mediterranean coast from a different perspective. Rent kayaks and paddle surf boards with us for an unforgettable adventure.",
+    aboutUs: "About Us",
+    hoursIntro: "Open every day. We'll be waiting for you on Playa de San Cristóbal to enjoy the Mediterranean.",
     reserveButton: "Reserve Now",
     viewPricesButton: "View Prices",
     // Navbar
@@ -67,7 +80,7 @@ const translations: Translations = {
     // Location
     findUs: "Find Us",
     locationSubtitle: "We're located on the beautiful beach of Almuñecar",
-    address: "Pl. San Cristóbal, 18690 Almuñécar, Granada, Spain",
+    address: "Paseo Miguel Ángel Blanco, 2, 18690 Almuñécar, Granada, Spain",
     howToFindUs: "How to find us",
     locationDescription: "We're located on San Cristóbal beach, right next to the blue flag area. Look for our blue and white flags with the OpenSea logo.",
     getDirections: "Get Directions",
@@ -96,8 +109,11 @@ const translations: Translations = {
   },
   es: {
     // Hero section
-    tagline: "Kayak y Paddle Surf en Almuñecar, Granada",
+    heroEyebrow: "Open Sea · Playa de San Cristóbal",
+    tagline: "Kayak y Paddle Surf en Almuñécar, Granada",
     description: "Experimenta la hermosa costa mediterránea desde una perspectiva diferente. Alquila kayaks y tablas de paddle surf con nosotros para una aventura inolvidable.",
+    aboutUs: "Sobre Nosotros",
+    hoursIntro: "Abierto todos los días. Te esperamos en la Playa de San Cristóbal para vivir el Mediterráneo.",
     reserveButton: "Reservar Ahora",
     viewPricesButton: "Ver Precios",
     // Navbar
@@ -148,7 +164,7 @@ const translations: Translations = {
     // Location
     findUs: "Encuéntranos",
     locationSubtitle: "Estamos ubicados en la hermosa playa de Almuñecar",
-    address: "Pl. San Cristóbal, 18690 Almuñécar, Granada, España",
+    address: "Paseo Miguel Ángel Blanco, 2, 18690 Almuñécar, Granada, España",
     howToFindUs: "Cómo encontrarnos",
     locationDescription: "Estamos ubicados en la playa de San Cristóbal, justo al lado de la zona pavillon bleu. Busca nuestras banderas azules y blancas con el logo OpenSea.",
     getDirections: "Cómo Llegar",
@@ -177,8 +193,11 @@ const translations: Translations = {
   },
   fr: {
     // Hero section
-    tagline: "Kayak et Paddle Surf à Almuñecar, Grenade",
+    heroEyebrow: "Open Sea · Playa de San Cristóbal",
+    tagline: "Kayak et Paddle Surf à Almuñécar, Grenade",
     description: "Découvrez la magnifique côte méditerranéenne sous un angle différent. Louez des kayaks et des planches de paddle surf avec nous pour une aventure inoubliable.",
+    aboutUs: "À Propos",
+    hoursIntro: "Ouvert tous les jours. Nous vous attendons sur la Playa de San Cristóbal pour profiter de la Méditerranée.",
     reserveButton: "Réserver Maintenant",
     viewPricesButton: "Voir les Prix",
     // Navbar
@@ -229,7 +248,7 @@ const translations: Translations = {
     // Location
     findUs: "Trouvez-Nous",
     locationSubtitle: "Nous sommes situés sur la magnifique plage d'Almuñecar",
-    address: "Pl. San Cristóbal, 18690 Almuñécar, Grenade, Espagne",
+    address: "Paseo Miguel Ángel Blanco, 2, 18690 Almuñécar, Grenade, Espagne",
     howToFindUs: "Comment nous trouver",
     locationDescription: "Nous sommes situés sur la plage de San Cristóbal, juste à côté de la zone pavillon bleu. Cherchez nos drapeaux bleus et blancs avec le logo OpenSea.",
     getDirections: "Obtenir l'Itinéraire",
@@ -258,28 +277,6 @@ const translations: Translations = {
   }
 };
 
-// Define route paths for each language
-const routePaths = {
-  en: {
-    home: '/',
-    kayak: '/kayak-rental-almunecar',
-    paddle: '/paddle-board-almunecar',
-    activities: '/sea-activities-costa-tropical'
-  },
-  es: {
-    home: '/es',
-    kayak: '/es/alquiler-kayak-almunecar',
-    paddle: '/es/paddle-surf-almunecar',
-    activities: '/es/actividades-maritimas-costa-tropical'
-  },
-  fr: {
-    home: '/fr',
-    kayak: '/fr/location-kayak-almunecar',
-    paddle: '/fr/paddle-board-almunecar',
-    activities: '/fr/activites-maritimes-costa-tropical'
-  }
-};
-
 interface LanguageContextType {
   language: Language;
   setLanguage: (language: Language) => void;
@@ -293,23 +290,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [language, setLanguageState] = useState<Language>('en');
 
-  // Detect language from URL
-  useEffect(() => {
-    const path = location.pathname;
-    if (path.startsWith('/es')) {
-      setLanguageState('es');
-    } else if (path.startsWith('/fr')) {
-      setLanguageState('fr');
-    } else {
-      setLanguageState('en');
-    }
-  }, [location.pathname]);
+  // Language is derived synchronously from the path (no state) so server-rendered
+  // and client markup always agree.
+  const language = deriveLanguage(location.pathname);
 
   const setLanguage = (newLanguage: Language) => {
-    setLanguageState(newLanguage);
-    
     // Get current route type
     const currentPath = location.pathname;
     let routeType = 'home';

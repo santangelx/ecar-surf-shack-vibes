@@ -63,6 +63,18 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
+				// Redesign palette (OpenSea.dc.html). Use these going forward.
+				brand: {
+					cream: '#F6F3EC',
+					ink: '#11313E',
+					night: '#0A2832',
+					ocean: '#0A5E74',
+					teal: '#0E7C99',
+					sky: '#6FC5DC',
+					coral: '#E8623D',
+					mist: '#E3EEF1',
+				},
+				// Legacy tokens kept for not-yet-removed components; do not use in new work.
 				ocean: {
 					light: '#B3E5F7',
 					DEFAULT: '#0097B2',
@@ -80,6 +92,10 @@ export default {
 				},
 				'coral-custom': '#FF6F61',
 				'turquoise': '#0097B2',
+			},
+			fontFamily: {
+				display: ['Archivo', 'system-ui', 'sans-serif'],
+				sans: ['Hanken Grotesk', 'system-ui', 'sans-serif'],
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -111,7 +127,7 @@ export default {
 				'wave': 'wave 2s ease-in-out infinite'
 			},
 			backgroundImage: {
-				'hero-pattern': 'linear-gradient(to right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.1)), url("https://images.unsplash.com/photo-1500375592092-40eb2168fd21?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")',
+				'sea-gradient': 'linear-gradient(155deg, #0A2832 0%, #0A5E74 55%, #0E7C99 100%)',
 			}
 		}
 	},

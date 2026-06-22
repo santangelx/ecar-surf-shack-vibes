@@ -1,7 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useLanguage, type Language } from '@/contexts/LanguageContext';
+import { SITE_URL, BUSINESS, GBP_URL } from '@/lib/site';
 
 interface SEOProps {
   title: string;
@@ -9,76 +10,76 @@ interface SEOProps {
   keywords?: string;
   image?: string;
   type?: 'website' | 'article';
-  structuredData?: any;
+  structuredData?: unknown;
 }
 
-const SEO: React.FC<SEOProps> = ({ 
-  title, 
-  description, 
+const stripTrailingSlash = (p: string) => (p.length > 1 ? p.replace(/\/$/, '') : p);
+
+const SEO: React.FC<SEOProps> = ({
+  title,
+  description,
   keywords,
-  image = 'https://opensea-almunecar.com/logo.png',
+  image = `${SITE_URL}/logo.png`,
   type = 'website',
-  structuredData
+  structuredData,
 }) => {
   const location = useLocation();
-  const { language } = useLanguage();
-  
-  const baseUrl = 'https://opensea-almunecar.com';
-  const currentUrl = `${baseUrl}${location.pathname}`;
-  
-  // Generate hreflang URLs for all language versions
+  const { language, routePaths } = useLanguage();
+
+  const path = stripTrailingSlash(location.pathname);
+  const currentUrl = `${SITE_URL}${path}`;
+
+  // Correct hreflang by construction: find which page-type the current path is,
+  // then emit the registered URL for each language (handles differing slugs).
+  const types = ['home', 'kayak', 'paddle', 'activities'] as const;
+  const langs: Language[] = ['en', 'es', 'fr'];
+  let routeType: (typeof types)[number] = 'home';
+  for (const t of types) {
+    if (langs.some((l) => stripTrailingSlash(routePaths[l][t]) === path)) {
+      routeType = t;
+      break;
+    }
+  }
   const hreflangUrls = {
-    en: location.pathname.replace(/^\/(es|fr)/, ''),
-    es: location.pathname.startsWith('/es') ? location.pathname : `/es${location.pathname}`,
-    fr: location.pathname.startsWith('/fr') ? location.pathname : `/fr${location.pathname}`
+    en: `${SITE_URL}${routePaths.en[routeType]}`,
+    es: `${SITE_URL}${routePaths.es[routeType]}`,
+    fr: `${SITE_URL}${routePaths.fr[routeType]}`,
   };
-  
-  // Clean up paths
-  Object.keys(hreflangUrls).forEach(lang => {
-    hreflangUrls[lang as keyof typeof hreflangUrls] = hreflangUrls[lang as keyof typeof hreflangUrls]
-      .replace(/\/\//g, '/')
-      .replace(/\/$/, '') || '/';
-  });
-  
-  // Default structured data for LocalBusiness
+
+  // Default LocalBusiness JSON-LD (overridable via the structuredData prop).
   const defaultStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "OpenSea Kayak & Paddle Surf",
-    "image": image,
-    "url": currentUrl,
-    "telephone": "+34666666666",
-    "priceRange": "€€",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Pl. San Cristóbal",
-      "addressLocality": "Almuñécar",
-      "addressRegion": "Granada",
-      "postalCode": "18690",
-      "addressCountry": "ES"
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: BUSINESS.name,
+    image,
+    url: currentUrl,
+    telephone: BUSINESS.telephone,
+    priceRange: BUSINESS.priceRange,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: BUSINESS.streetAddress,
+      addressLocality: BUSINESS.addressLocality,
+      addressRegion: BUSINESS.addressRegion,
+      postalCode: BUSINESS.postalCode,
+      addressCountry: BUSINESS.addressCountry,
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 36.7334,
-      "longitude": -3.6909
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: BUSINESS.latitude,
+      longitude: BUSINESS.longitude,
     },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday", "Tuesday", "Wednesday", "Thursday", 
-        "Friday", "Saturday", "Sunday"
-      ],
-      "opens": "10:00",
-      "closes": "19:00"
+    hasMap: GBP_URL,
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: BUSINESS.opens,
+      closes: BUSINESS.closes,
     },
-    "sameAs": [
-      "https://www.facebook.com/opensea.almunecar",
-      "https://www.instagram.com/opensea.almunecar"
-    ]
+    ...(BUSINESS.sameAs.length ? { sameAs: BUSINESS.sameAs } : {}),
   };
-  
+
   const finalStructuredData = structuredData || defaultStructuredData;
-  
+
   return (
     <Helmet>
       {/* Basic Meta Tags */}
@@ -86,14 +87,14 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={currentUrl} />
-      
+
       {/* Language and Alternative URLs */}
       <html lang={language} />
-      <link rel="alternate" hrefLang="en" href={`${baseUrl}${hreflangUrls.en}`} />
-      <link rel="alternate" hrefLang="es" href={`${baseUrl}${hreflangUrls.es}`} />
-      <link rel="alternate" hrefLang="fr" href={`${baseUrl}${hreflangUrls.fr}`} />
-      <link rel="alternate" hrefLang="x-default" href={`${baseUrl}/`} />
-      
+      <link rel="alternate" hrefLang="en" href={hreflangUrls.en} />
+      <link rel="alternate" hrefLang="es" href={hreflangUrls.es} />
+      <link rel="alternate" hrefLang="fr" href={hreflangUrls.fr} />
+      <link rel="alternate" hrefLang="x-default" href={hreflangUrls.es} />
+
       {/* Open Graph Tags */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
@@ -101,28 +102,24 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:url" content={currentUrl} />
       <meta property="og:image" content={image} />
       <meta property="og:locale" content={language === 'es' ? 'es_ES' : language === 'fr' ? 'fr_FR' : 'en_US'} />
-      <meta property="og:site_name" content="OpenSea Kayak & Paddle Surf" />
-      
+      <meta property="og:site_name" content={BUSINESS.name} />
+
       {/* Twitter Card Tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-      <meta name="twitter:site" content="@opensea_kayak" />
-      
+
       {/* Additional SEO Tags */}
       <meta name="robots" content="index, follow" />
-      <meta name="googlebot" content="index, follow" />
-      <meta name="author" content="OpenSea Kayak & Paddle Surf" />
+      <meta name="author" content={BUSINESS.name} />
       <meta name="geo.region" content="ES-AN" />
       <meta name="geo.placename" content="Almuñécar" />
-      <meta name="geo.position" content="36.7334;-3.6909" />
-      <meta name="ICBM" content="36.7334, -3.6909" />
-      
+      <meta name="geo.position" content={`${BUSINESS.latitude};${BUSINESS.longitude}`} />
+      <meta name="ICBM" content={`${BUSINESS.latitude}, ${BUSINESS.longitude}`} />
+
       {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(finalStructuredData)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(finalStructuredData)}</script>
     </Helmet>
   );
 };

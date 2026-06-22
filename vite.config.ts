@@ -4,6 +4,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 import sitemap from "vite-plugin-sitemap";
 import viteImagemin from 'vite-plugin-imagemin';
+import { ROUTES } from "./src/lib/routes";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -17,23 +18,10 @@ export default defineConfig(({ mode }) => ({
     mode === 'development' &&
     componentTagger(),
     sitemap({
-      hostname: 'https://opensea-almunecar.com',
-      generateRobotsTxt: true,
+      hostname: 'https://opensea-almunecar.es',
+      generateRobotsTxt: false, // we ship our own public/robots.txt
       exclude: ['/404'],
-      dynamicRoutes: [
-        '/',
-        '/kayak-rental-almunecar',
-        '/paddle-board-almunecar', 
-        '/sea-activities-costa-tropical',
-        '/es',
-        '/es/alquiler-kayak-almunecar',
-        '/es/paddle-surf-almunecar',
-        '/es/actividades-maritimas-costa-tropical',
-        '/fr',
-        '/fr/location-kayak-almunecar',
-        '/fr/paddle-board-almunecar',
-        '/fr/activites-maritimes-costa-tropical'
-      ]
+      dynamicRoutes: ROUTES,
     }),
     viteImagemin({
       gifsicle: {

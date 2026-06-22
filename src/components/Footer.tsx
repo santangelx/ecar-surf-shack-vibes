@@ -1,60 +1,56 @@
-
 import React from 'react';
-import { Clock, MapPin } from "lucide-react";
+import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { MAPS_DIRECTIONS_URL, BUSINESS } from '@/lib/site';
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, routePaths, language } = useLanguage();
+  const paths = routePaths[language];
+  const year = new Date().getFullYear();
+
+  const linkStyle: React.CSSProperties = { color: 'rgba(255,255,255,.78)', textDecoration: 'none', fontSize: 15 };
+  const headingStyle: React.CSSProperties = {
+    fontWeight: 700,
+    fontSize: 13,
+    letterSpacing: '.2em',
+    textTransform: 'uppercase',
+    color: '#6FC5DC',
+    margin: '0 0 18px',
+  };
 
   return (
-    <footer className="bg-ocean-dark text-white pt-16 pb-8">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <footer style={{ background: '#0A2832', color: 'rgba(255,255,255,.78)', padding: 'clamp(56px,8vw,96px) clamp(20px,6vw,96px) clamp(32px,4vw,48px)' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 'clamp(32px,4vw,56px)' }}>
           <div>
-            <h3 className="text-2xl font-bold mb-4">OpenSea</h3>
-            <p className="mb-6">
-              {t('description')}
-            </p>
+            <div className="font-display" style={{ fontWeight: 800, fontSize: 26, color: '#fff', letterSpacing: '-.01em', marginBottom: 16 }}>
+              OPEN SEA
+            </div>
+            <p style={{ fontSize: 15, lineHeight: 1.65, margin: 0, maxWidth: '38ch' }}>{t('description')}</p>
           </div>
-          
           <div>
-            <h4 className="text-xl font-semibold mb-4">{t('quickLinks')}</h4>
-            <ul className="space-y-2">
+            <h4 className="font-display" style={headingStyle}>{t('quickLinks')}</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <li><Link to={paths.kayak} style={linkStyle}>{t('kayakRentals')}</Link></li>
+              <li><Link to={paths.paddle} style={linkStyle}>{t('paddleBoardNav')}</Link></li>
+              <li><Link to={paths.activities} style={linkStyle}>{t('seaActivities')}</Link></li>
               <li>
-                <a href="#services" className="hover:text-ocean-light transition-colors">{t('ourServices')}</a>
-              </li>
-              <li>
-                <a href="#prices" className="hover:text-ocean-light transition-colors">{t('ourPrices')}</a>
-              </li>
-              <li>
-                <a href="#hours" className="hover:text-ocean-light transition-colors">{t('businessHours')}</a>
-              </li>
-              <li>
-                <a href="#location" className="hover:text-ocean-light transition-colors">{t('findUs')}</a>
+                <a href={MAPS_DIRECTIONS_URL} target="_blank" rel="noopener noreferrer" style={linkStyle}>{t('location')}</a>
               </li>
             </ul>
           </div>
-          
           <div>
-            <h4 className="text-xl font-semibold mb-4">{t('businessHours')}</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2">
-                <Clock className="h-5 w-5 text-ocean-light" />
-                <div>
-                  <p className="font-medium">{t('everyday')}</p>
-                  <p className="text-sm">11:00 AM - 8:00 PM</p>
-                </div>
+            <h4 className="font-display" style={headingStyle}>{t('businessHours')}</h4>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <li style={{ fontSize: 15 }}>
+                <span style={{ display: 'block', color: '#fff', fontWeight: 600 }}>{t('everyday')}</span>{BUSINESS.opens} – {BUSINESS.closes}
               </li>
-              <li className="flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-ocean-light" />
-                <span>{t('address')}</span>
-              </li>
+              <li style={{ fontSize: 15 }}>{t('address')}</li>
             </ul>
           </div>
         </div>
-        
-        <div className="border-t border-white/20 mt-12 pt-6 text-center">
-          <p>&copy; {new Date().getFullYear()} OpenSea Kayak & Paddle Surf. {t('allRightsReserved')}</p>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,.14)', marginTop: 'clamp(40px,5vw,64px)', paddingTop: 24, textAlign: 'center', fontSize: 14 }}>
+          © {year} OpenSea Kayak &amp; Paddle Surf. {t('allRightsReserved')}
         </div>
       </div>
     </footer>

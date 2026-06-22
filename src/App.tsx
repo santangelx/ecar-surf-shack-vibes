@@ -13,45 +13,53 @@ import SeaActivities from "./pages/SeaActivities";
 
 const queryClient = new QueryClient();
 
+// Router-less app body. Used by both the client (wrapped in BrowserRouter via
+// App below) and the SSG prerender (wrapped in StaticRouter in entry-server.tsx).
+// Keep all providers EXCEPT the router here.
+export const AppShell = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <LanguageProvider>
+        <Toaster />
+        <Sonner />
+        <Routes>
+          {/* Default Routes */}
+          <Route path="/" element={<Index />} />
+          <Route path="/kayak-rental-almunecar" element={<KayakRental />} />
+          <Route path="/paddle-board-almunecar" element={<PaddleBoard />} />
+          <Route path="/sea-activities-costa-tropical" element={<SeaActivities />} />
+
+          {/* Spanish Routes */}
+          <Route path="/es" element={<Index />} />
+          <Route path="/es/alquiler-kayak-almunecar" element={<KayakRental />} />
+          <Route path="/es/paddle-surf-almunecar" element={<PaddleBoard />} />
+          <Route path="/es/actividades-maritimas-costa-tropical" element={<SeaActivities />} />
+
+          {/* French Routes */}
+          <Route path="/fr" element={<Index />} />
+          <Route path="/fr/location-kayak-almunecar" element={<KayakRental />} />
+          <Route path="/fr/paddle-board-almunecar" element={<PaddleBoard />} />
+          <Route path="/fr/activites-maritimes-costa-tropical" element={<SeaActivities />} />
+
+          {/* Redirects for consistency */}
+          <Route path="/kayak" element={<Navigate to="/kayak-rental-almunecar" replace />} />
+          <Route path="/paddle" element={<Navigate to="/paddle-board-almunecar" replace />} />
+          <Route path="/activities" element={<Navigate to="/sea-activities-costa-tropical" replace />} />
+
+          {/* 404 */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </LanguageProvider>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
+
+// Client entry: HelmetProvider outermost, then the browser router.
 const App = () => (
   <HelmetProvider>
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <BrowserRouter>
-          <LanguageProvider>
-            <Toaster />
-            <Sonner />
-            <Routes>
-              {/* Default Routes */}
-              <Route path="/" element={<Index />} />
-              <Route path="/kayak-rental-almunecar" element={<KayakRental />} />
-              <Route path="/paddle-board-almunecar" element={<PaddleBoard />} />
-              <Route path="/sea-activities-costa-tropical" element={<SeaActivities />} />
-              
-              {/* Spanish Routes */}
-              <Route path="/es" element={<Index />} />
-              <Route path="/es/alquiler-kayak-almunecar" element={<KayakRental />} />
-              <Route path="/es/paddle-surf-almunecar" element={<PaddleBoard />} />
-              <Route path="/es/actividades-maritimas-costa-tropical" element={<SeaActivities />} />
-              
-              {/* French Routes */}
-              <Route path="/fr" element={<Index />} />
-              <Route path="/fr/location-kayak-almunecar" element={<KayakRental />} />
-              <Route path="/fr/paddle-board-almunecar" element={<PaddleBoard />} />
-              <Route path="/fr/activites-maritimes-costa-tropical" element={<SeaActivities />} />
-              
-              {/* Redirects for consistency */}
-              <Route path="/kayak" element={<Navigate to="/kayak-rental-almunecar" replace />} />
-              <Route path="/paddle" element={<Navigate to="/paddle-board-almunecar" replace />} />
-              <Route path="/activities" element={<Navigate to="/sea-activities-costa-tropical" replace />} />
-              
-              {/* 404 */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </LanguageProvider>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
+    <BrowserRouter>
+      <AppShell />
+    </BrowserRouter>
   </HelmetProvider>
 );
 

@@ -1,152 +1,187 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useLanguage, type Language } from '@/contexts/LanguageContext';
+import { SITE_URL, BUSINESS, GBP_URL } from '@/lib/site';
+
+// Localized FAQ — emitted as FAQPage JSON-LD. Note: Google retired FAQ rich
+// results for non-gov/health sites (2023); kept for entity clarity and AI/LLM
+// answer engines (GEO), and it's harmless. No self-serving review markup here.
+const FAQ: Record<Language, { q: string; a: string }[]> = {
+  es: [
+    {
+      q: '¿Qué actividades acuáticas hay disponibles en Almuñécar?',
+      a: 'Ofrecemos alquiler de kayaks, alquiler de tablas de paddle surf (SUP), bicicletas de agua, tours guiados en kayak, clases de SUP yoga y tours de paddle al amanecer y atardecer por la Costa Tropical.',
+    },
+    {
+      q: '¿Necesito experiencia para los deportes acuáticos en Almuñécar?',
+      a: '¡No se necesita experiencia! Nuestro equipo estable y las aguas tranquilas de la bahía son perfectos para principiantes. Proporcionamos instrucción básica y todo el equipo de seguridad.',
+    },
+    {
+      q: '¿Qué incluye el precio del alquiler?',
+      a: 'Todos los alquileres incluyen el equipo (kayak o tabla de SUP), remo, chaleco salvavidas e instrucción básica. En los tours también proporcionamos bolsas impermeables y guías experimentados.',
+    },
+    {
+      q: '¿Cuáles son las mejores condiciones para los deportes acuáticos en la Costa Tropical?',
+      a: 'La Costa Tropical disfruta de más de 300 días de sol al año. Las mañanas suelen ofrecer las aguas más tranquilas; las tardes traen brisas suaves ideales para remar con más aventura.',
+    },
+    {
+      q: '¿Cómo reservo actividades acuáticas en Almuñécar?',
+      a: 'Puedes visitarnos directamente en la Playa de San Cristóbal en Almuñécar. Recomendamos venir con antelación durante la temporada alta (julio y agosto).',
+    },
+  ],
+  en: [
+    {
+      q: 'What water activities are available in Almuñécar?',
+      a: 'We offer kayak rental, stand-up paddle board (SUP) rental, water bikes, guided kayak tours, SUP yoga classes, and sunrise and sunset paddle tours along the Costa Tropical.',
+    },
+    {
+      q: 'Do I need experience for water sports in Almuñécar?',
+      a: 'No experience needed! Our stable equipment and the calm bay waters are perfect for beginners. We provide basic instruction and all safety equipment.',
+    },
+    {
+      q: 'What does the rental price include?',
+      a: 'Every rental includes the equipment (kayak or SUP board), paddle, life jacket, and basic instruction. Tours also include dry bags for your belongings and experienced guides.',
+    },
+    {
+      q: 'What are the best conditions for water sports on the Costa Tropical?',
+      a: 'The Costa Tropical enjoys over 300 days of sunshine a year. Mornings usually offer the calmest water; afternoons bring gentle breezes ideal for more adventurous paddling.',
+    },
+    {
+      q: 'How do I book water activities in Almuñécar?',
+      a: 'Visit us directly on Playa de San Cristóbal in Almuñécar. We recommend arriving early during high season (July and August).',
+    },
+  ],
+  fr: [
+    {
+      q: 'Quelles activités nautiques sont disponibles à Almuñécar ?',
+      a: 'Nous proposons la location de kayaks, la location de planches de paddle surf (SUP), des vélos aquatiques, des excursions guidées en kayak, des cours de SUP yoga et des sorties paddle au lever et au coucher du soleil sur la Costa Tropical.',
+    },
+    {
+      q: "Ai-je besoin d'expérience pour les sports nautiques à Almuñécar ?",
+      a: "Aucune expérience requise ! Notre matériel stable et les eaux calmes de la baie sont parfaits pour les débutants. Nous fournissons une initiation et tout l'équipement de sécurité.",
+    },
+    {
+      q: 'Que comprend le prix de la location ?',
+      a: "Chaque location comprend le matériel (kayak ou planche SUP), la pagaie, le gilet de sauvetage et une initiation. Les excursions incluent aussi des sacs étanches et des guides expérimentés.",
+    },
+    {
+      q: 'Quelles sont les meilleures conditions pour les sports nautiques sur la Costa Tropical ?',
+      a: 'La Costa Tropical bénéficie de plus de 300 jours de soleil par an. Les matins offrent les eaux les plus calmes ; les après-midis apportent de légères brises idéales pour pagayer.',
+    },
+    {
+      q: 'Comment réserver des activités nautiques à Almuñécar ?',
+      a: 'Rendez-nous visite directement sur la Playa de San Cristóbal à Almuñécar. Nous recommandons de venir tôt en haute saison (juillet et août).',
+    },
+  ],
+};
 
 const SchemaMarkup = () => {
+  const { language } = useLanguage();
+
   const organizationSchema = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "OpenSea Kayak & Paddle Surf",
-    "alternateName": "OpenSea Almuñécar",
-    "url": "https://opensea-almunecar.com",
-    "logo": "https://opensea-almunecar.com/logo.png",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+34-666-666-666",
-      "contactType": "customer service",
-      "areaServed": "ES",
-      "availableLanguage": ["English", "Spanish", "French"]
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: BUSINESS.name,
+    alternateName: 'OpenSea Almuñécar',
+    url: SITE_URL,
+    logo: `${SITE_URL}/logo.png`,
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: BUSINESS.telephone,
+      contactType: 'customer service',
+      areaServed: 'ES',
+      availableLanguage: ['Spanish', 'English', 'French'],
     },
-    "sameAs": [
-      "https://www.facebook.com/opensea.almunecar",
-      "https://www.instagram.com/opensea.almunecar",
-      "https://twitter.com/opensea_kayak"
-    ]
+    ...(BUSINESS.sameAs.length ? { sameAs: BUSINESS.sameAs } : {}),
   };
 
   const localBusinessSchema = {
-    "@context": "https://schema.org",
-    "@type": "SportsActivityLocation",
-    "name": "OpenSea Kayak & Paddle Surf",
-    "image": [
-      "https://opensea-almunecar.com/logo.png",
-      "https://opensea-almunecar.com/images/kayak.png",
-      "https://opensea-almunecar.com/images/paddle.png"
+    '@context': 'https://schema.org',
+    '@type': 'SportsActivityLocation',
+    name: BUSINESS.name,
+    description:
+      'Alquiler de kayak y paddle surf en Almuñécar, Granada. Costa Tropical.',
+    image: [
+      `${SITE_URL}/logo.png`,
+      `${SITE_URL}/images/kayak-1200w.jpg`,
+      `${SITE_URL}/images/paddle-1200w.jpg`,
     ],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Pl. San Cristóbal",
-      "addressLocality": "Almuñécar",
-      "addressRegion": "Granada",
-      "postalCode": "18690",
-      "addressCountry": "ES"
+    url: SITE_URL,
+    telephone: BUSINESS.telephone,
+    priceRange: BUSINESS.priceRange,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: BUSINESS.streetAddress,
+      addressLocality: BUSINESS.addressLocality,
+      addressRegion: BUSINESS.addressRegion,
+      postalCode: BUSINESS.postalCode,
+      addressCountry: BUSINESS.addressCountry,
     },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 36.7334,
-      "longitude": -3.6909
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: BUSINESS.latitude,
+      longitude: BUSINESS.longitude,
     },
-    "url": "https://opensea-almunecar.com",
-    "telephone": "+34666666666",
-    "priceRange": "€€",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday"
-        ],
-        "opens": "10:00",
-        "closes": "19:00"
-      }
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Water Sports Rentals",
-      "itemListElement": [
+    hasMap: GBP_URL,
+    areaServed: { '@type': 'Place', name: 'Costa Tropical, Granada' },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: BUSINESS.opens,
+      closes: BUSINESS.closes,
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Water Sports Rentals',
+      itemListElement: [
         {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Kayak Rental",
-            "description": "Single and double kayak rentals for exploring Costa Tropical"
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Kayak Rental',
+            description: 'Single and double kayak rentals for exploring the Costa Tropical',
           },
-          "price": "15.00",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock"
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            price: '10.00',
+            priceCurrency: 'EUR',
+          },
         },
         {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Stand Up Paddle Board Rental",
-            "description": "SUP board rentals with all equipment included"
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Stand Up Paddle Board Rental',
+            description: 'SUP board rentals with all equipment included',
           },
-          "price": "15.00",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock"
-        }
-      ]
-    }
-  };
-
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://opensea-almunecar.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Kayak Rental",
-        "item": "https://opensea-almunecar.com/kayak-rental-almunecar"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Paddle Board",
-        "item": "https://opensea-almunecar.com/paddle-board-almunecar"
-      }
-    ]
-  };
-
-  const reviewSchema = {
-    "@context": "https://schema.org",
-    "@type": "AggregateRating",
-    "itemReviewed": {
-      "@type": "LocalBusiness",
-      "name": "OpenSea Kayak & Paddle Surf"
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            price: '12.00',
+            priceCurrency: 'EUR',
+          },
+        },
+      ],
     },
-    "ratingValue": "4.8",
-    "reviewCount": "523",
-    "bestRating": "5"
+    ...(BUSINESS.sameAs.length ? { sameAs: BUSINESS.sameAs } : {}),
+  };
+
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQ[language].map(({ q, a }) => ({
+      '@type': 'Question',
+      name: q,
+      acceptedAnswer: { '@type': 'Answer', text: a },
+    })),
   };
 
   return (
     <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(organizationSchema)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(localBusinessSchema)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(breadcrumbSchema)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(reviewSchema)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(localBusinessSchema)}</script>
+      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
     </Helmet>
   );
 };
 
-export default SchemaMarkup; 
+export default SchemaMarkup;
